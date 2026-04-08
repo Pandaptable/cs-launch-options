@@ -265,7 +265,7 @@
 -gpuraytracing, 3529211103
 -vulkan, 259954249
 -fpexcept, 1065043357
-3701529680
+-1600, 3701529680
 -servertime, 4210410144
 -game, 602672632
 -valveclient, 1351765477
@@ -320,7 +320,7 @@
 -sse2, 4274893216
 1064329240
 -dx11, 2325266050
-2728263361
+-1080, 2728263361
 -favor_consistent_framerate, 1137193026
 -steamhdl_init, 1699613595
 -publiccontent, 1070638683
@@ -333,7 +333,7 @@
 -novconsole, 12931391
 -width, 2313820763
 -recordperfstats, 1300049617
-828789371
+-reduceecoreusage, 828789371
 -allow_exe_in_build_dir, 453874011
 -highdpi, 208895721
 -demo_upconvert, 3578443439
@@ -519,7 +519,7 @@
 -force_recommend_dx11, 1014489924
 -noreflex, 1548402123
 -maxtextureres, 4068712167
-3104695209
+-no_render_thread_affinity, 3104695209
 -sgpu, 910340513
 -dx11debug, 1313610811
 -reflex, 2642521732
@@ -558,7 +558,7 @@
 -antilag, 760425684
 -noantilag, 2848325155
 -suppressdx9, 1027572879
-441297243
+-4gpu, 441297243
 -swap_chain_as_is, 633101115
 -abortprocessonserioustexturewarning, 825867510
 ======== rendersystemempty.dll ========
@@ -653,7 +653,7 @@
 -vulkan_enable_nv_raytracing_validation, 1957510917
 2346691913
 -vulkan_disable_ext_extended_dynamic_state, 1578375863
-3104695209
+-no_render_thread_affinity, 3104695209
 -vulkan_validation_info, 3305840807
 -vulkan_validation_warnings, 3720824177
 -sgpu, 910340513
@@ -708,7 +708,7 @@
 -coop_fullscreen, 3231905404
 -steam, 53536153
 -h, 1193756079
-2728263361
+-1080, 2728263361
 -con_logfile, 1234987984
 796564511
 -vsync, 2767798943
@@ -721,7 +721,7 @@
 -gpuraytracing, 3529211103
 -dev, 574071661
 -sw, 628725258
-3701529680
+-1600, 3701529680
 -rendertask, 474059147
 -testmode, 869412437
 -no_tools_ignorechildprocess_env, 631902775
@@ -870,7 +870,7 @@
 -addon, 1321118783
 -sse4, 1849011768
 -disable_asset_autorecompile, 3317354165
-4261927495
+-disable_consider_read_only_assets_out_of_date, 4261927495
 -wait_before_assetsystem_startup, 2245844626
 -enable_qaccessible, 1129441271
 -nostyle, 2189129855
@@ -1059,7 +1059,7 @@
 -dx11, 2325266050
 -w, 1610683921
 -unbufferedio, 2502882823
-2728263361
+-1080, 2728263361
 -tools, 197456290
 -sse2, 4274893216
 -windowless, 2653084028
@@ -1117,7 +1117,7 @@
 -entrypoint, 2708616278
 -steam, 53536153
 -fpexcept, 1065043357
-3701529680
+-1600, 3701529680
 -coop_fullscreen, 3231905404
 -con_logfile, 1234987984
 -height, 297341175
