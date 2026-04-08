@@ -34,3 +34,5 @@ target
 
 
 hashcat/
+!murmur-check.exe
+*.exe
