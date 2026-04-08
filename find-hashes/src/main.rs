@@ -1,7 +1,7 @@
 use anyhow::{Context, Result};
 use goblin::pe::PE;
 use iced_x86::{Decoder, DecoderOptions, Instruction, Mnemonic, OpKind, Register};
-use std::collections::HashSet;
+use std::collections::HashMap; // Changed from HashSet to HashMap
 use std::env;
 use std::fs::{self, File, OpenOptions};
 use std::io::Write;
@@ -96,8 +96,9 @@ fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()>
 	}
 
 	let bitness = if pe.is_64 { 64 } else { 32 };
-	// We now store a tuple of (hash, instruction_pointer)
-	let mut extracted_hashes: HashSet<(u64, u64)> = HashSet::new();
+
+	// Use a HashMap to group IPs by their extracted hash
+	let mut extracted_hashes: HashMap<u64, Vec<u64>> = HashMap::new();
 
 	for section in pe.sections {
 		let is_executable =
@@ -147,7 +148,7 @@ fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()>
 							DecoderOptions::NONE,
 						);
 						let mut fwd_instr = Instruction::default();
-						// Store the tuple of (Immediate_Value, Instruction_Pointer)
+
 						let mut last_rdx_imm: Option<(u64, u64)> = None;
 						let mut instructions_scanned = 0;
 
@@ -172,7 +173,8 @@ fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()>
 									|| fwd_instr.op0_kind() == OpKind::Register;
 								if is_indirect_call {
 									if let Some((hash, ip)) = last_rdx_imm {
-										extracted_hashes.insert((hash, ip));
+										// Insert the hash as a key, and append the IP to the vector
+										extracted_hashes.entry(hash).or_default().push(ip);
 									}
 									break;
 								}
@@ -187,14 +189,25 @@ fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()>
 	if !extracted_hashes.is_empty() {
 		let filename = dll_path.file_name().unwrap_or_default().to_string_lossy();
 		writeln!(file, "======== {} ========", filename)?;
-		for (hash, addr) in &extracted_hashes {
+
+		for (hash, mut addrs) in extracted_hashes.clone() {
+			// Deduplicate addresses just in case the scanner caught the same instruction twice
+			addrs.sort_unstable();
+			addrs.dedup();
+
 			if debug_mode {
-				writeln!(file, "{}, // 0x{:X}", hash, addr)?;
+				// Map the addresses into hex strings and join them for the comment
+				let addr_strings: Vec<String> =
+					addrs.iter().map(|a| format!("0x{:X}", a)).collect();
+				writeln!(file, "{}, // Found at: {}", hash, addr_strings.join(", "))?;
 			} else {
 				writeln!(file, "{}", hash)?;
 			}
 		}
-		println!("[+] Found and exported {} hashes.", extracted_hashes.len());
+		println!(
+			"[+] Found and exported {} unique hashes.",
+			extracted_hashes.len()
+		);
 	} else {
 		println!("[-] No hashes extracted.");
 	}
