@@ -39,8 +39,6 @@ check `murmur-check` folder now for source (newer version)
 516911585: a
 ```
 
-`cuda-code.exe` is a brute forcer, originally written and then vibecoded to cuda with gemini
-
 `word-list.txt` is for use with hashcat brute forcing, no proper script for hashcat usage but we did find a few with it
 
 `hashcat.patch` is a patch for hashcat to implement mmh2 32bit into it (it just replaces mmh1, so `hashcat -m 25700 -a 0` is the usage)
