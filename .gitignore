@@ -91,3 +91,4 @@ dkms.conf
 
 hashcat/
 found_hashes.txt
+find-hashes/hashes.txt
