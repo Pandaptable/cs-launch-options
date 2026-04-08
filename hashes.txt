@@ -525,7 +525,7 @@
 -reflex, 2642521732
 -nomultigpu, 3691212280
 -sse4, 1849011768
-146879290
+-dlss, 146879290
 -sse2, 4274893216
 -dx11debugbreak, 131549787
 -renderdoc, 1980692650
@@ -604,9 +604,9 @@
 -sse3, 2776830954
 -vulkan_disable_khr_separate_depth_stencil_layouts, 1277924399
 -vulkan_vma_shutdown, 3215873099
--vulkan_disable_fossilize_whitelist, 2414162262
+-vulkan_disable_fossilize_1whitelist, 2414162262
 -autoconfig, 3596328012
-1944714247
+-nodlss, 1944714247
 -vulkan_disable_khr_swapchain_mutable_format, 3649009234
 -vulkan_disable_pipeline_cache, 3729780277
 -vulkan_preload_fossilize, 4213386972
