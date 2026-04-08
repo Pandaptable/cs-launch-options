@@ -185,11 +185,9 @@ int main(int argc, char **argv)
 				{
 					std::string found_str(host_matches[i].str);
 
-					std::cerr << "\n[+] MATCH FOUND: " << found_str << std::endl;
-
 					if (found_str[0] == '-' || found_str[0] == '+')
 					{
-						out_file << found_str << " = " << host_matches[i].hash << "\n";
+						out_file << found_str << "\n";
 						out_file.flush();
 					}
 				}

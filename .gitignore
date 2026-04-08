@@ -36,3 +36,4 @@ target
 hashcat/
 !murmur-check.exe
 *.exe
+found_hashes.txt
