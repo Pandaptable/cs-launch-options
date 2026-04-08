@@ -509,7 +509,7 @@
 -sse3, 2776830954
 ======== rendersystemdx11.dll ========
 -avx, 3020312170
-1944714247
+-nodlss, 1944714247
 -adapter, 871401063
 -nomipmaps, 392659006
 -multigpu, 1731710107
@@ -628,7 +628,7 @@
 -ignoredxsupportcfg, 966457197
 -vulkan_disable_ext_mesh_shaders, 1471640956
 -dontevicttextures, 1145230473
-146879290
+-dlss, 146879290
 1242785521
 -vulkan_metal_validation, 3483772851
 -noinitfallbacktextures, 2462688185
