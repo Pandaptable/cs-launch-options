@@ -5,6 +5,46 @@
 #include <cstdlib>
 #include <cuda_runtime.h>
 #include <climits>
+#include <atomic>
+#include <thread>
+#include <chrono>
+
+#ifdef _WIN32
+#include <conio.h>
+int check_keypress()
+{
+	return _kbhit();
+}
+#else
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
+int check_keypress()
+{
+	struct termios oldt, newt;
+	int ch;
+	int oldf;
+
+	tcgetattr(STDIN_FILENO, &oldt);
+	newt = oldt;
+	newt.c_lflag &= ~(ICANON | ECHO);
+	tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+	oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+	fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+
+	ch = getchar();
+
+	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+	fcntl(STDIN_FILENO, F_SETFL, oldf);
+
+	if (ch != EOF)
+	{
+		ungetc(ch, stdin);
+		return 1;
+	}
+	return 0;
+}
+#endif
 
 #define STRINGTOKEN_MURMURHASH_SEED 0x31415926
 #define MAX_TARGETS 64
@@ -103,6 +143,20 @@ __global__ void bruteforce_kernel(int length, unsigned long long offset, unsigne
 	}
 }
 
+// Background thread function to listen for a keypress
+void keypress_listener(std::atomic<bool> &stop_flag)
+{
+	while (!stop_flag)
+	{
+		if (check_keypress())
+		{
+			stop_flag = true;
+			break;
+		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	}
+}
+
 int main(int argc, char **argv)
 {
 	if (argc < 2)
@@ -134,11 +188,27 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
+	// Print Target Information
+	std::cerr << "Target Hash";
+	if (host_targets.size() > 1)
+		std::cerr << "es";
+	std::cerr << ": ";
+
+	for (size_t i = 0; i < host_targets.size(); ++i)
+	{
+		std::cerr << host_targets[i] << (i < host_targets.size() - 1 ? ", " : "");
+	}
+	std::cerr << "\nPress ANY KEY to stop.\n\n";
+
+	// Initialize Global Stop Flag and Keypress Listener
+	std::atomic<bool> stop_flag(false);
+	std::thread listener(keypress_listener, std::ref(stop_flag));
+
 	int threadsPerBlock = 256;
 	unsigned long long batch_size = 256ULL * 1024 * 1024;
 
 	int length = 2;
-	while (true)
+	while (!stop_flag)
 	{
 		unsigned long long total_combinations = 2;
 		bool overflow = false;
@@ -162,6 +232,12 @@ int main(int argc, char **argv)
 
 		for (unsigned long long offset = 0; offset < total_combinations; offset += batch_size)
 		{
+			// Exit batch loop if key pressed
+			if (stop_flag)
+			{
+				std::cerr << "\n\n[!] Stopping early due to user interruption...\n";
+				break;
+			}
 
 			double current_progress = ((double)offset / (double)total_combinations) * 100.0;
 
@@ -198,6 +274,13 @@ int main(int argc, char **argv)
 			}
 		}
 		length++;
+	}
+
+	// Clean up thread upon exit
+	stop_flag = true;
+	if (listener.joinable())
+	{
+		listener.join();
 	}
 
 	out_file.close();
