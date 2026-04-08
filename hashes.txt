@@ -560,7 +560,7 @@
 -suppressdx9, 1027572879
 441297243
 -swap_chain_as_is, 633101115
-825867510
+-abortprocessonserioustexturewarning, 825867510
 ======== rendersystemempty.dll ========
 -sse3, 2776830954
 -renderdoc, 1980692650
