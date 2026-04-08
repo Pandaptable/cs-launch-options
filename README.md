@@ -48,3 +48,5 @@ check `murmur-check` folder now for source (newer version)
 in `find-hashes` you can find a vibecoded rust snippet to check a dll for hashed command line arguments (somehow it always finds everything)
 
 in `hashcat-auto` it's the python script to automatically use hashcat specifically for launch options, could be better tho
+
+`deadlock.txt` is the same as `launch-options.txt` just gathered from https://github.com/SteamTracking/GameTracking-Deadlock string dumps instead of CS2 game tracking
