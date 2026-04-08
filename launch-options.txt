@@ -1,8 +1,10 @@
 -abandoned
+-abortprocessonserioustexturewarning
 -accessor
 -accountid
 -adapter
 -addhltv1
+-additionalpdbsearchpath
 -addon
 -addon_path
 -aggs
@@ -56,6 +58,7 @@
 -asset
 -assetbrowser
 -assetmergegameother
+-assettargetgameroot
 -asyncconsole
 -async_memory_map
 -async_shader_load
@@ -89,6 +92,7 @@
 -bigwindow
 -binary
 -bindlesstexturedescriptorsettest
+-bindpos
 -block
 -blocks
 -blocksize
@@ -162,6 +166,7 @@
 -cpumonitoringstart
 -crash_resource_compiler
 -crc
+-createfile
 -csgo_checksum_and_sign_modules
 -csgo_signature_file
 -csgo_write_system_signatures
@@ -174,6 +179,10 @@
 -curtimewarnings
 -customswf
 -dac_offline
+-danger_mode_ignore_schema_mismatches
+-dbf
+-dbl_max
+-dbl_min
 -deathsonly
 -debug
 -debug-kubejobs
@@ -187,6 +196,7 @@
 -debug_font_size
 -dedicated
 -defaultgamedir
+-defertextureloads
 -demo
 -demo_force_version
 -demo_upconvert
@@ -221,12 +231,16 @@
 -dlc
 -dllinfo
 -dllverification
+-donotpreloaddlls
+-dontevicttextures
 -dontusegamedir
+-doublegrf
 -dti
 -duck
 -duck_notoggle
 -dumpcollide
 -dumplongticks
+-dumpmeshes
 -dumpstaticprop
 -dumpvidmemstats
 -dvd
@@ -280,10 +294,13 @@
 -file
 -filelist
 -filelist_filter
+-fillvolume
 -filmgrain
 -filterassetfiles
 -find_unlocalized
 -floathdr
+-flt_max
+-flt_min
 -flush
 -flushlog
 -fonipa
@@ -295,6 +312,7 @@
 -forceatifetch4
 -forcedx11dx9
 -forcegrasstile
+-forcelpp
 -forcenovsync
 -forceperfectworld
 -forcesbhsizemb
@@ -335,6 +353,7 @@
 -fulllog
 -fullmemdumpallowed
 -fullmemdumprequiregb
+-fullminidumps
 -fullscreen
 -fullversion
 -full_memory_dumps
@@ -349,6 +368,7 @@
 -gamestatsloggingtofile
 -gamestatstag
 -gameuidll
+-game_particle_manager_event_destroy_involving
 -gamma20
 -gdb
 -geometry
@@ -383,11 +403,13 @@
 -gl_validate_shader_early
 -gpuraytracing
 -graph
+-grassburntexturesize
 -grenade1
 -grenade2
 -gtpoollimitexec
 -gtpoolstacksize
 -h
+-hammersavetextmaps
 -hammer_iso_surface
 -hammer_test_node
 -header_hull_bounds
@@ -413,6 +435,7 @@
 -ignorelanwhitelist
 -ignoresigint
 -ignoresortcheck
+-ignoresource2overrides
 -ignoreswf
 -ignore_certificate_address
 -ignore_certificate_valveds
@@ -420,6 +443,7 @@
 -indexlights
 -indir
 -inf
+-infinity
 -input
 -inputss_update_spew
 -input_button_code_is_scan_code
@@ -437,6 +461,7 @@
 -internalbuild
 -internaliprequired
 -interpolation
+-interpolations
 -ioidlecheck
 -ip
 -ip_relay
@@ -448,11 +473,13 @@
 -itemeditordev
 -jitter
 -jlook
+-joints
 -jump
 -keepsources
 -keepstalezip
 -keepweaponverts
 -keep_gear
+-key
 -klook
 -language
 -launcherlanguage
@@ -466,6 +493,7 @@
 -lib-morph
 -light
 -lightifmissing
+-lightmapdeterministiccharts
 -limitvsconst
 -lmvlow
 -lmvmax
@@ -495,10 +523,16 @@
 -makereslists
 -mantle
 -mapname
+-material
 -materialsystem2_strict
+-matrices
+-matrix-animation-input
+-matrix-animation-output-transform
+-matrix-animation-transform
 -mat_aaquality
 -mat_antialias
 -mat_force_molten_vk
+-mat_resolvefullframedepth
 -mat_softwaretl
 -mat_state_bundles
 -mat_texture_list
@@ -527,6 +561,7 @@
 -minmemory
 -mobile
 -mobile_use_pc_graphics
+-monitortexturesize
 -more
 -mousegrab
 -movedown
@@ -589,6 +624,7 @@
 -nocustomermachine
 -nod3d9ex
 -nodashboard
+-nodebugnames
 -nodebugstringbuffer
 -nodedicatedconsole
 -nodefaultmap
@@ -616,12 +652,14 @@
 -nohltv
 -noime
 -noinitfallbacktextures
+-noinitmemory
 -noinvert
 -noiocp
 -noip
 -nojoy
 -nojserrors
 -noloaderlockprobe
+-noloadpluginsforclient
 -nolod
 -nologstdiotofile
 -nomaster
@@ -645,10 +683,13 @@
 -nopreload
 -nopreloadmodels
 -nopreloadsounds
+-nopriorityboost
+-noprocessheap
 -noprune
 -nops2b
 -nopvs
 -noqueuedload
+-noqueuedpacketthread
 -noreadonlyassets
 -norebuildaudio
 -norebuildaudiocache
@@ -656,6 +697,7 @@
 -norestart
 -norevert
 -norfs
+-normal
 -normalvis
 -norussian
 -nosave
@@ -682,6 +724,7 @@
 -nounsupportedgpuchecks
 -nouserclip
 -novalveds
+-novconfig
 -novconsole
 -novid
 -novirtualmesh
@@ -708,6 +751,7 @@
 -no_spread_finalize
 -no_texture_stream
 -no_tools_ignorechildprocess_env
+-null
 -oldcubepath
 -olddialogs
 -onethreadpool
@@ -728,6 +772,8 @@
 -panorama
 -panoramajoy
 -panorama_nosinglecontext
+-parallelhammerproceduralupdate
+-parallelhammerrenderables
 -particles
 -pass_vk_processkey
 -pause
@@ -737,9 +783,11 @@
 -person
 -phased_window_create
 -phonehome
+-physbakemapmesh
 -physdebugdata
 -physoptimizecollision
 -pidfile
+-pivot
 -pixel_offset_x
 -pixel_offset_y
 -platform
@@ -750,6 +798,7 @@
 -pme
 -port
 -pos
+-position
 -preload
 -preloadtextures
 -prepfors2
@@ -757,6 +806,8 @@
 -presskeytoexit
 -primarysound
 -processheap
+-processheap
+-processheapzeromem
 -product
 -profile
 -profileinit
@@ -799,6 +850,7 @@
 -radialradio
 -radialradio2
 -radialradio3
+-randomizememory
 -random_invariant
 -rdropt
 -readonlyexceptcoreandleafiest
@@ -807,7 +859,9 @@
 -rebuildparticleremaptable
 -recapvid
 -recompile_special_dependency_mismatches
+-recordperfstats
 -ref
+-reflectiontexturesize
 -reflex
 -refresh
 -refreshrate
@@ -827,6 +881,7 @@
 -replay
 -report
 -requirecubemaps
+-reservelowmem
 -reservewarnmb
 -reset
 -resizing
@@ -836,6 +891,7 @@
 -resource_exit_after_time
 -resource_leaks
 -resource_system_verbose
+-restartselffromalternatelocation_relaunchtime
 -restricted_write_include
 -retail
 -retire
@@ -853,6 +909,7 @@
 -rs_recommend_gen
 -rs_reset
 -rtest1
+-rthelpertexturesize
 -rtx
 -ru
 -r_emulate_gl
@@ -876,6 +933,7 @@
 -sdlaudiodriver
 -sdl_displayindex
 -sdl_log
+-sdl_video_driver
 -serverlogging
 -servertime
 -session
@@ -903,6 +961,7 @@
 -shadersondemand
 -shaderstats
 -shaders_force_recompile
+-shadowtargetsize
 -shelpers_dwarf_symbol_path
 -short
 -shotid
@@ -970,6 +1029,9 @@
 -steamhdl_steamguard
 -steamhdl_steamguard_email
 -steamhdl_user
+-steamlearn_cache_data_error_invalid_timestamp
+-steamlearn_inference_error_invalid_project_id
+-steamlearn_inference_metadata_error_forbidden
 -steamlocal
 -steamlogin_accesscode
 -steamlogin_authority
@@ -989,6 +1051,7 @@
 -stringtables
 -style
 -stylesheet
+-subnormal
 -subprocess
 -sunken
 -suppressdx9
@@ -1000,6 +1063,8 @@
 -sw
 -swapcores
 -swap_chain_as_is
+-tablettexturesize
+-target
 -targets
 -taunt
 -telemetry_level
@@ -1065,8 +1130,10 @@
 -uselmv
 -uselogdir
 -usep4port
+-usepriorityboost
 -usercon
 -usereslistfile
+-usestandarderror
 -usetcp
 -use_or_reload
 -use_panel_id_in_rt_name
@@ -1091,6 +1158,7 @@
 -vguifocus
 -vguimessages
 -vgui_drawtree
+-viewmodelscratchtexturesize
 -visgranularity
 -vis_preview
 -vminidump_exception_code
@@ -1098,6 +1166,7 @@
 -vpkincr
 -vproject
 -vrad3
+-vrad3writedebugcolor
 -vscriptdebug
 -vscriptdebug_game
 -vscriptdebug_script
@@ -1212,12 +1281,15 @@
 -wait_before_assetsystem_startup
 -walk
 -warmtime
+-warningsaserrors
 -wavonly
 -weaponmodelcache
 -weapon_anim_prefab
 -weights
+-weights
 -widgetcount
 -width
+-win32
 -window
 -windowed
 -windowless
@@ -1235,9 +1307,13 @@
 -xlsp_insecure
 -xnet_bypass_security
 -y
+-yuptozup
+-ze-intel-enable-auto-large-grf-mode
 -ze-opt-disable
 -ze-opt-large-register-file
 -ze-take-global-address
+-zip_endofcentraldirrecord
+-zoneprojectiontexturesize
 -zoom
 -zoom_in
 -zoom_out
