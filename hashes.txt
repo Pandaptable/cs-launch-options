@@ -381,8 +381,6 @@
 -disable_cursor_clip, 3399117454
 -inputss_update_spew, 2662879892
 -noime, 2357129268
-======== libglib-2.0-0.dll ========
-4
 ======== localize.dll ========
 -perfectworld, 3451720338
 -ccsyntax, 390511131
