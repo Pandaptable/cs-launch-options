@@ -9,32 +9,32 @@
 for the above i made the below bash script to check the lists automatically against the file
 ```bash
 mc () {
-    local input_file="$1"
-    [[ ! -f "$input_file" ]] && echo "Input file not found" && return 1
+	_process_output() {
+		while IFS=':' read -r hash opt || [[ -n "$hash" ]]; do
+			hash=$(echo "$hash" | tr -d ' \r ')
+			opt=$(echo "$opt" | sed 's/^ //' | tr -d '\r')
 
-    while IFS= read -r opt || [[ -n "$opt" ]]; do
-        # Clean the input option (remove Windows line endings)
-        opt=$(echo "$opt" | tr -d '\r')
-        [[ -z "$opt" ]] && continue
+			[[ -z "$hash" || -z "$opt" ]] && continue
 
-        # Get the hash for this option
-        local hash
-        hash=$(./murmur-check.exe "$opt" | tr -d '\r')
+			sed -i "s|^$hash\r*$|$opt, $hash|" hashes.txt
+		done
+	}
 
-        # Use sed to update hashes.txt in-place.
-        # It only matches lines that are EXACTLY the hash (to avoid double-prefixing).
-        # The | delimiter is used in case the option contains slashes.
-        sed -i "s|^$hash\r*$|$opt, $hash|" hashes.txt
-    done < "$input_file"
+	if [[ "$1" == "-f" ]]; then
+		local input_file="$2"
+		[[ ! -f "$input_file" ]] && echo "Input file not found" && return 1
+
+		xargs ./mmc.exe < "$input_file" | _process_output
+	else
+		./mmc.exe "$@" | _process_output
+	fi
 }
 ```
 
-`murmur-check.exe` is just an implementation of below to easily check the hash of a launch option (lost source code)
-
-check `murmur-check` folder now for source (newer version)
+`murmur-check` folder is just an implementation of the hashing that valve uses to easily check the hash of a launch option
 
 ```
->main.exe meow a
+>mmc.exe meow a
 3158276541: meow
 516911585: a
 ```
