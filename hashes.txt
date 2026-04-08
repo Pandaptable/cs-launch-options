@@ -144,8 +144,8 @@
 ======== assetrename.dll ========
 -tools, 197456290
 -avx, 3020312170
-1788282970
-1031966263
+-parallelhammerrenderables, 1788282970
+-parallelhammerproceduralupdate, 1031966263
 3489200015
 -sse3, 2776830954
 -sse2, 4274893216
@@ -154,7 +154,7 @@
 1668489442
 -sse4, 1849011768
 ======== assetsystem.dll ========
-264265537
+-assettargetgameroot, 264265537
 -assetmergegameother, 239115878
 -sse4, 1849011768
 -sse3, 2776830954
@@ -233,7 +233,7 @@
 3489200015
 -usebuildversion, 1561231826
 -height, 297341175
-500051639
+-sdl_video_driver, 500051639
 -appidoverride, 1809419997
 -windowless, 2653084028
 -nodedicatedconsole, 2218049769
@@ -242,7 +242,7 @@
 -allocfailmb, 3228107479
 -tvprimaryonly, 2800397407
 -subprocess, 1298540483
-1089569248
+-donotpreloaddlls, 1089569248
 -allowdebug, 2472028446
 -insecure, 2406745183
 -dxwarp, 4184646854
@@ -272,7 +272,7 @@
 -attachtodebugger, 39359517
 -gameinput, 487301348
 -benchnote, 3366757130
-1310035317
+-usepriorityboost, 1310035317
 -unbufferedio, 2502882823
 -playtest, 2395652043
 -sdl_log, 2284796977
@@ -303,7 +303,7 @@
 -asyncconsole, 4210168119
 -vconport, 3008056938
 -hideconsole, 1452845556
-3985938959
+-nopriorityboost, 3985938959
 -full_render_callback_clear, 3079672404
 -condebug, 450968086
 -steamhdl_password, 2024503135
@@ -332,7 +332,7 @@
 -uselogdir, 21729377
 -novconsole, 12931391
 -width, 2313820763
-1300049617
+-recordperfstats, 1300049617
 828789371
 -allow_exe_in_build_dir, 453874011
 -highdpi, 208895721
@@ -366,7 +366,7 @@
 -unbuffered_io, 2432198044
 -tools, 197456290
 -log_opened_files, 89848572
-1300049617
+-recordperfstats, 1300049617
 -fake_workshop_dir, 797265055
 ======== imemanager.dll ========
 -tools, 197456290
@@ -531,7 +531,7 @@
 -renderdoc, 1980692650
 -ignoredxsupportcfg, 966457197
 -maxtexturepoolsize_2gb, 2219828148
-1562981286
+-shadowtargetsize, 1562981286
 -shaderdebugging, 1568951001
 -dx11_skip_swap_chains, 3576281813
 -shaderstats, 4221164810
@@ -546,7 +546,7 @@
 -noinitfallbacktextures, 2462688185
 -disable_async_shaders, 1843755095
 -autoconfig, 3596328012
-1145230473
+-dontevicttextures, 1145230473
 -onethreadpool, 3430089553
 -nogammaramp, 3732322922
 -no_dx11_extensions, 180264111
@@ -570,17 +570,17 @@
 -adapter, 871401063
 -tools, 197456290
 -autoconfig, 3596328012
-825867510
+-abortprocessonserioustexturewarning, 825867510
 -shaderstats, 4221164810
 -sse4, 1849011768
 -maxdxlevel, 2916934716
 -ignoredxsupportcfg, 966457197
-1145230473
+-dontevicttextures, 1145230473
 -maxtextureres, 4068712167
 -noinitfallbacktextures, 2462688185
 -force_recommend_dx11, 1014489924
 -renderdoc_capture_validation_errors, 1238242786
-1562981286
+-shadowtargetsize, 1562981286
 -maxtextureres_2gb, 915504071
 -noconfig, 4015530479
 -sse2, 4274893216
@@ -614,7 +614,7 @@
 -vulkan_trim_all_command_pools, 919484247
 -vulkan_disable_ext_multi_draw, 212502428
 -noconfig, 4015530479
-825867510
+-abortprocessonserioustexturewarning, 825867510
 -vulkan_disable_amd_memory_overallocation_behavior, 3370526142
 -tools, 197456290
 -noantilag, 2848325155
@@ -627,7 +627,7 @@
 -vulkan_disable_ext_memory_budget, 1626377711
 -ignoredxsupportcfg, 966457197
 -vulkan_disable_ext_mesh_shaders, 1471640956
-1145230473
+-dontevicttextures, 1145230473
 146879290
 1242785521
 -vulkan_metal_validation, 3483772851
@@ -661,7 +661,7 @@
 -vulkan_disable_steam_shader_cache, 3417464481
 -vulkan_enable_robustness, 3538741073
 -vulkan_aggressive_command_pool_rebalancing, 480927572
-1562981286
+-shadowtargetsize, 1562981286
 -sdl_displayindex, 984772713
 -vulkan_disable_ext_load_store_op_none, 493243299
 -vulkan_disable_khr_ray_tracing_position_fetch, 164863566
@@ -725,15 +725,15 @@
 -rendertask, 474059147
 -testmode, 869412437
 -no_tools_ignorechildprocess_env, 631902775
-264265537
+-assettargetgameroot, 264265537
 166991432
-1479722877
+-lightmapdeterministiccharts, 1479722877
 -sdl_log, 2284796977
 -bigwindow, 2579478974
-1788282970
+-parallelhammerrenderables, 1788282970
 -addon, 1321118783
 -emaildumps_to, 4251604169
-1031966263
+-parallelhammerproceduralupdate, 1031966263
 327937524
 -fastpack, 2129537917
 -consolelog_append, 1849850619
@@ -760,10 +760,10 @@
 3489200015
 -highdpi, 208895721
 -emaildumps_subject_extra, 720252668
-500051639
+-sdl_video_driver, 500051639
 -novconsole, 12931391
 -fs, 2587423816
-1789359416
+-dumpmeshes, 1789359416
 -unbufferedio, 2502882823
 -mobile, 3328603821
 -height, 297341175
@@ -895,12 +895,12 @@
 -vsync, 2767798943
 2327613413
 3489200015
-1031966263
+-parallelhammerproceduralupdate, 1031966263
 -emaildumps_to, 4251604169
 -no_environment_maps, 549658686
 -nop4sync, 2170082451
 -retail, 2772236617
-3627260051
+-hammersavetextmaps, 3627260051
 -experimental_smartprops, 162242015
 -tools, 197456290
 -no_hammer_crash_recovery, 3197694453
@@ -911,7 +911,7 @@
 -testmode, 869412437
 -toolsquiet, 3513791888
 -noasync_shaders, 364717528
-1788282970
+-parallelhammerrenderables, 1788282970
 -smoothtoolcamera, 2258526725
 2706099331
 -usep4port, 486437523
@@ -996,8 +996,8 @@
 -sse2, 4274893216
 ======== toolscenenodes.dll ========
 -experimental_smartprops, 162242015
-1031966263
-1788282970
+-parallelhammerproceduralupdate, 1031966263
+-parallelhammerrenderables, 1788282970
 -sse3, 2776830954
 -avx, 3020312170
 1668489442
@@ -1052,7 +1052,7 @@
 ======== vrad3.dll ========
 -x, 3793427571
 -vconport, 3008056938
-500051639
+-sdl_video_driver, 500051639
 -safe_mode, 642946094
 93284877
 -consolelog_notimestamp, 1615887145
