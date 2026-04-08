@@ -287,7 +287,7 @@
 -set_power_qos_disable, 3478593498
 -textsublanguage, 1755977669
 -gtpoolstacksize, 2766669240
-796564511
+-480, 796564511
 -nologstdiotofile, 803571430
 -breakimmediately, 1112866904
 -h, 1193756079
