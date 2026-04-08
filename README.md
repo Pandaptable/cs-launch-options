@@ -30,59 +30,13 @@ mc () {
 ```
 
 `murmur-check.exe` is just an implementation of below to easily check the hash of a launch option (lost source code)
-```cpp
-#include "hash.hpp"
-#include <bit>
-#include <cstdint>
 
-uint32_t MurmurHash2(const void *key, int len, uint32_t seed)
-{
-    const uint32_t m = 0x5bd1e995;
-    const int      r = 24;
+check `murmur-check` folder now for source (newer version)
 
-    uint32_t             h    = seed ^ len;
-    const unsigned char *data = (const unsigned char *)key;
-    while (len >= 4)
-    {
-        uint32_t k = *(uint32_t *)data;
-        if constexpr (std::endian::native != std::endian::little)
-            k = std::byteswap(k);
-
-        k *= m;
-        k ^= k >> r;
-        k *= m;
-
-        h *= m;
-        h ^= k;
-
-        data += 4;
-        len -= 4;
-    }
-
-    switch (len)
-    {
-        case 3:
-            h ^= data[2] << 16;
-        case 2:
-            h ^= data[1] << 8;
-        case 1:
-            h ^= data[0];
-            h *= m;
-    };
-
-    h ^= h >> 13;
-    h *= m;
-    h ^= h >> 15;
-
-    return h;
-}
-
-
-inline uint32_t CalculateStringHashOptimizedAlreadyLowercase(const std::string_view str)
-{
-    static constexpr uint32_t STRINGTOKEN_MURMURHASH_SEED = 0x31415926;
-    return MurmurHash2(str.data(), str.size(), STRINGTOKEN_MURMURHASH_SEED);
-}
+```
+>main.exe meow a
+3158276541: meow
+516911585: a
 ```
 
 `cuda-code.exe` is a brute forcer, originally written and then vibecoded to cuda with gemini
