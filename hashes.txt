@@ -1,0 +1,1155 @@
+======== client.dll ========
+-vscriptdebug_game, 4265542941
+-entkv_use_schema, 1190268809
+-pressdemo, 886486246
+-sse3, 2776830954
+-find_unlocalized, 1116175964
+-enabledownloadtest, 3803204183
+-insecure, 2406745183
+-game, 602672632
+-gamestatsloggingtofile, 1254442816
+-trusted, 165799374
+-vscriptdebug, 3616760377
+-avx, 3020312170
++connect, 2040773423
+-usebanlist, 644336921
+-playtest, 2395652043
+-sse2, 4274893216
++playcast, 1728870504
+-gamestatslogging, 2295112737
+-fallback2, 1836540640
++playdemo, 274617796
+-autoconfig_level, 1997326025
+-noclearsave, 1877996950
+-buildcubemaps, 375552886
++connect_lobby, 3458441557
+-network_class_conform_check, 1561589398
+-nodashboard, 667815781
+-internaliprequired, 3515233334
++dev_simulate_gcdown, 4037768485
+-untrusted, 1016118749
+-all_languages, 455342288
+-tools, 197456290
+-gamestatsfileoutputonly, 1742906026
+-no_prewarm_panorama, 575116422
+-steam, 53536153
+-defaultgamedir, 3762323426
+-nosteam, 112808614
++csgo_econ_action_preview, 2368753337
+-noscripting, 1526587341
+-valveserver, 34501765
+-perfectworld, 3451720338
+-autoconfig, 3596328012
+-removesparseshadowtree, 4269225322
+-autodetectedperfectworld, 3778424420
+-fallback1, 2020486640
+-buildsparseshadowtree, 719891883
+3489200015
+-vscript_allow_local_disk_access, 969735938
+-insecure_forced_by_launcher, 3075429066
+-retail, 2772236617
+-no_environment_maps, 549658686
+-noconfig, 4015530479
+1668489442
+-maxplayers, 3016700309
+-debugwelcome, 1042346542
+-curtimewarnings, 1646659829
++csgo_download_match, 3861218940
+-sse4, 1849011768
++dev_simulate_gcrecvonly, 1740575824
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-rendertask, 474059147
+-buildcubemaps_keep_inputs, 944415195
+======== host.dll ========
+-sse2, 4274893216
+-avx, 3020312170
+-sse4, 1849011768
+-tools, 197456290
+-demo_force_version, 627688847
+-sse3, 2776830954
+======== matchmaking.dll ========
+-tools, 197456290
+-sse2, 4274893216
+-usebanlist, 644336921
+-sse3, 2776830954
+-avx, 3020312170
+-perfectworld, 3451720338
+-gamemodes_serverfile, 3035480723
+-sse4, 1849011768
+-maxplayers_override, 1239208111
+======== modtools.dll ========
+-tools, 197456290
+-sse4, 1849011768
+-sse3, 2776830954
+-avx, 3020312170
+-sse2, 4274893216
+======== server.dll ========
+-sse3, 2776830954
+-curtimewarnings, 1646659829
+-tools, 197456290
+-disable_workshop_command_filtering, 1432471252
+-perfectworld, 3451720338
+-buildsparseshadowtree, 719891883
+-sse2, 4274893216
+-nobots, 3308470460
+-maxplayers, 3016700309
+-pressdemo, 886486246
+-noscripting, 1526587341
+-gamestatsfileoutputonly, 1742906026
+-sse4, 1849011768
+2947891903
+-gamestatslogging, 2295112737
+-entkv_use_schema, 1190268809
+-addon, 1321118783
+-tournament, 2922599937
+-dev, 574071661
+-game, 602672632
+-avx, 3020312170
+1668489442
+-vscriptdebug, 3616760377
+-vscript_allow_local_disk_access, 969735938
+-vscriptdebug_game, 4265542941
+-noclearsave, 1877996950
++dev_simulate_gcdown, 4037768485
+-sv_maxuptimelimit, 2187607395
++dev_simulate_gcrecvonly, 1740575824
+-buildcubemaps, 375552886
+-internaliprequired, 3515233334
+3489200015
+-gamestatsloggingtofile, 1254442816
+======== animationsystem.dll ========
+-sse4, 1849011768
+-sse2, 4274893216
+-avx, 3020312170
+-tools, 197456290
+-sse3, 2776830954
+======== assetbrowser.dll ========
+-assetbrowser, 3869122259
+-avx, 3020312170
+-uidev, 2502076614
+-sse3, 2776830954
+-sse2, 4274893216
+-sse4, 1849011768
+-tools, 197456290
+======== assetpreview.dll ========
+-vsync, 2767798943
+-sse4, 1849011768
+-tools, 197456290
+-sse3, 2776830954
+-avx, 3020312170
+-smoothtoolcamera, 2258526725
+1424991031
+-experimental_smartprops, 162242015
+-sse2, 4274893216
+======== assetrename.dll ========
+-tools, 197456290
+-avx, 3020312170
+1788282970
+1031966263
+3489200015
+-sse3, 2776830954
+-sse2, 4274893216
+-threads, 2503439279
+-experimental_smartprops, 162242015
+1668489442
+-sse4, 1849011768
+======== assetsystem.dll ========
+264265537
+-assetmergegameother, 239115878
+-sse4, 1849011768
+-sse3, 2776830954
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-testmode_hide_invalid_content_sync_problems, 1502697765
+-tools, 197456290
+-avx, 3020312170
+1060584315
+-sse2, 4274893216
+======== engine2.dll ========
+-benchnoexit, 1082584151
+-console, 37560161
+-bigwindow, 2579478974
+-tournament, 2922599937
+-spewserializers, 3223879006
+-con_logfile, 1234987984
+-netconport, 3762526648
+-netconpassword, 1275579111
+-allow_non_tools_paths, 1133895985
+-error_if_idle, 2902326498
+-w, 1610683921
+-skip_driver_check, 921320528
+-textlanguage, 2115173857
+-vconsole, 1170955440
+-tournament_extra_casters_slots, 1161064268
+-steamhdl_steamguard, 81837292
+-stringtabledebug, 3822596772
+-safe_mode, 642946094
+-vsync, 2767798943
+-warmtime, 1734994539
+-dac_offline, 4205805975
+-allocwarnmb, 1079813135
+-usercon, 2842088384
+-nosse4, 656837765
+-devcontent, 3985700755
+-coop_fullscreen, 3231905404
+-empty, 1166302021
+-profilemapload_noquit, 3368143839
+-dxlevel, 647217068
+-launcherlanguage, 2584558099
+-nopassiveasserts, 3801943308
+1997211886
+-sse3, 2776830954
+-nodev, 2819031969
+-mainthreadpriority, 3531316086
+-addon, 1321118783
+-benchtime, 2709576564
+-tools, 197456290
+-nomaster, 3491324333
+-quitonservershutdown, 3265631316
+-benchframes, 140396338
+-multiplier, 4243272330
+93284877
+-bench, 34864605
+-disable_shader_compile_wait, 1575789442
+-addhltv1, 4255653410
+-nobreakpad, 3634746192
+-heapcheck, 1892883470
+-netspike, 1423135714
+-notoolsdev, 885745964
+-showasserts, 658464540
+-buildcubemaps, 375552886
+-panoconsole, 3079965285
+-noperfectworld, 1335814567
+-forcenovsync, 1039533358
+-rendertask, 474059147
+-sse4, 1849011768
+-nohltv, 2074638849
+-comment, 2944205826
+-border, 3067777132
+-threads, 2503439279
+-launchersublanguage, 3028200080
+-insecure_forced_by_launcher, 3075429066
+-noconfig, 4015530479
+896260251
+3489200015
+-usebuildversion, 1561231826
+-height, 297341175
+500051639
+-appidoverride, 1809419997
+-windowless, 2653084028
+-nodedicatedconsole, 2218049769
+-full_memory_dumps, 2037331155
+-worldwide, 1596223310
+-allocfailmb, 3228107479
+-tvprimaryonly, 2800397407
+-subprocess, 1298540483
+1089569248
+-allowdebug, 2472028446
+-insecure, 2406745183
+-dxwarp, 4184646854
+-adapter, 871401063
+-steamhdl_user, 1622931990
+-port, 1226158575
+-noborder, 85611144
+-noassetbrowser, 876441444
+-promptperfectworld, 757846314
+-flushlog, 1663315727
+-low, 639963259
+-enablepassiveasserts, 936398129
+-novpk, 2345050509
+-sw, 628725258
+-dedicated, 1436925979
+-ignoreassertafterminidump, 500535430
+-dumpvidmemstats, 3803146772
+-language, 3191848936
+-valveserver, 34501765
+-gpuraytracing, 3529211103
+-vulkan, 259954249
+-fpexcept, 1065043357
+3701529680
+-servertime, 4210410144
+-game, 602672632
+-valveclient, 1351765477
+-attachtodebugger, 39359517
+-gameinput, 487301348
+-benchnote, 3366757130
+1310035317
+-unbufferedio, 2502882823
+-playtest, 2395652043
+-sdl_log, 2284796977
+-snallownoauth, 3371237308
+-steamlogin_authority, 1521174208
+-ioidlecheck, 3468939281
+-rs_reset, 2885683845
+-asset, 1799856898
+-tvmasteronly, 3781048289
+-steamhdl_immediatelogin, 2607228314
+-steamlogin_accesscode, 593607175
+-set_power_qos_disable, 3478593498
+-textsublanguage, 1755977669
+-gtpoolstacksize, 2766669240
+796564511
+-nologstdiotofile, 803571430
+-breakimmediately, 1112866904
+-h, 1193756079
+-gtpoollimitexec, 2968403373
+-contentroot, 1063703514
+-nv, 1751934355
+-serverlogging, 2741351893
+-novalveds, 178815654
+-resizing, 446691998
+-rs_recommend_gen, 687350504
+-perfectworld, 3451720338
+-consolelog_notimestamp, 1615887145
+-asyncconsole, 4210168119
+-vconport, 3008056938
+-hideconsole, 1452845556
+3985938959
+-full_render_callback_clear, 3079672404
+-condebug, 450968086
+-steamhdl_password, 2024503135
+-dev, 574071661
+-msaa, 1449492945
+-useappid, 3270260316
+-steam, 53536153
+-allow_no_lobby_connect, 3519569274
+-toconsole, 1064564545
+-profilemapload, 208033588
+-conrotate, 1937598139
+-addon_path, 2574785511
+-rendersystemdll, 3672818219
+-sse2, 4274893216
+1064329240
+-dx11, 2325266050
+2728263361
+-favor_consistent_framerate, 1137193026
+-steamhdl_init, 1699613595
+-publiccontent, 1070638683
+-fs, 2587423816
+-y, 439648255
+-no_tools_ignorechildprocess_env, 631902775
+-framesamples, 405591878
+-fullscreen, 3232779058
+-uselogdir, 21729377
+-novconsole, 12931391
+-width, 2313820763
+1300049617
+828789371
+-allow_exe_in_build_dir, 453874011
+-highdpi, 208895721
+-demo_upconvert, 3578443439
+1668489442
++port, 2694212796
+-nopvs, 1526890664
+-buildsparseshadowtree, 719891883
+-x, 3793427571
+-consolelog, 2571514003
+-avx, 3020312170
+-consolelog_append, 1849850619
+-force_new_recommend, 2752896179
+-reservewarnmb, 282409274
+-novsync, 2561736516
+-steamhdl_steamguard_email, 3470219381
+-nosound, 3676274044
+-clientonly, 3249499118
+-tool, 1574749
+-high, 3955821618
+-nominidumps, 3326958702
+======== exportsystem.dll ========
+-avx, 3020312170
+-sse2, 4274893216
+-tools, 197456290
+-sse3, 2776830954
+-sse4, 1849011768
+======== filesystem_stdio.dll ========
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-disable_auto_vpk_loading, 1908792890
+-unbuffered_io, 2432198044
+-tools, 197456290
+-log_opened_files, 89848572
+1300049617
+-fake_workshop_dir, 797265055
+======== imemanager.dll ========
+-tools, 197456290
+======== inputsystem.dll ========
+-nojoy, 754777372
+-input_button_code_is_scan_code, 2477383855
+-cursor_scale_percent, 1813163366
+-input_timing_spew, 3133186246
+-tools, 197456290
+-joy, 1345706809
+-pass_vk_processkey, 335170191
+-disable_cursor_clip, 3399117454
+-inputss_update_spew, 2662879892
+-noime, 2357129268
+======== libglib-2.0-0.dll ========
+4
+======== localize.dll ========
+-perfectworld, 3451720338
+-ccsyntax, 390511131
+-all_languages, 455342288
+-enablejongsung, 3217666393
+-disablelocalization, 2145831849
+-textsublanguage, 1755977669
+-textlanguage, 2115173857
+-language, 3191848936
+-tools, 197456290
+======== materialsystem2.dll ========
+-mat_force_molten_vk, 3087691872
+-shaders_force_recompile, 2122897934
+-noasyncmaterialload, 556000788
+-insecure, 2406745183
+-shaders, 334828552
+-sse2, 4274893216
+-vulkan_use_ios_vcs, 4290427469
+-shaderdebugging, 1568951001
+-tools, 197456290
+-sse4, 1849011768
+-shaderstats, 4221164810
+-mobile_use_pc_graphics, 1492646052
++mat_clearshadercache, 2196080635
+-avx, 3020312170
+-batchwarnings, 1715525156
+-mat_state_bundles, 2903140431
+-steam, 53536153
+-materialsystem2_strict, 3870830038
+-shaderopt, 2921512743
+-batcherrors, 3231712520
+-sse3, 2776830954
+-vulkan_use_android_vcs, 2776628610
+======== meshsystem.dll ========
+-tools, 197456290
+-sse4, 1849011768
+-sse3, 2776830954
+-sse2, 4274893216
+-avx, 3020312170
+======== modeldoc_utils.dll ========
+-avx, 3020312170
+-sse3, 2776830954
+-sse4, 1849011768
+-sse2, 4274893216
+-tools, 197456290
+======== navsystem.dll ========
+-tools, 197456290
+-sse2, 4274893216
+-sse3, 2776830954
+-sse4, 1849011768
+-avx, 3020312170
+======== networksystem.dll ========
+-networkspewcreate, 2140666982
+-networkspewexcludes, 2125205728
+-networkspew, 1345726466
+-sse3, 2776830954
+1668489442
+-snallownoauth, 3371237308
+-sse2, 4274893216
+-ip, 1495259235
+-noip, 1056346854
+-sse4, 1849011768
+-networkspewentity, 4228365612
+-net_no_parallel_build, 1673231537
+-networkspewfakefields, 4002657759
+-dti, 408722138
+-tools, 197456290
+-networkprofile_fsbuild, 840611758
+-networkvar_validate, 618699380
+-networkspewentity_readfieldlist, 1541785958
+-networkspeweverything, 2361825402
+-steamnetworkingsockets_use_steamclient, 2140081723
+-avx, 3020312170
+-use_valve_ice, 2431048809
+-perfectworld, 3451720338
+======== p4lib.dll ========
+-steam, 53536153
+-nop4, 3299646795
+2133286778
+======== panorama.dll ========
+-nojoy, 754777372
+-avx, 3020312170
+-sse2, 4274893216
+-nopanoramajoy, 3470642579
+-use_panel_id_in_rt_name, 2763451158
+-immediate_language_change, 181688885
+-noime, 2357129268
+-tools, 197456290
+-panorama_nosinglecontext, 799337197
+-panoramajoy, 3573945171
+-sse3, 2776830954
+-joy, 1345706809
+-sse4, 1849011768
+======== panoramauiclient.dll ========
+-avx, 3020312170
+-sse3, 2776830954
+-all_languages, 455342288
+-find_unlocalized, 1116175964
+-tools, 197456290
+-sse4, 1849011768
+-sse2, 4274893216
+======== particles.dll ========
+-avx, 3020312170
+-sse4, 1849011768
+-sse2, 4274893216
+-tools, 197456290
+-sse3, 2776830954
+======== physicsbuilder.dll ========
+-tools, 197456290
+-sse2, 4274893216
+-sse3, 2776830954
+-physdebugdata, 3944507073
+-sse4, 1849011768
+-avx, 3020312170
+======== propertyeditor.dll ========
+-sse2, 4274893216
+-sse3, 2776830954
+-tools, 197456290
+-sse4, 1849011768
+-avx, 3020312170
+======== pulse_system.dll ========
+-sse4, 1849011768
+-sse2, 4274893216
+-avx, 3020312170
+-tools, 197456290
+-sse3, 2776830954
+======== rendersystemdx11.dll ========
+-avx, 3020312170
+1944714247
+-adapter, 871401063
+-nomipmaps, 392659006
+-multigpu, 1731710107
+-noframelatencylimit, 2785174024
+-noconfig, 4015530479
+-sdl_displayindex, 984772713
+-force_recommend_dx11, 1014489924
+-noreflex, 1548402123
+-maxtextureres, 4068712167
+3104695209
+-sgpu, 910340513
+-dx11debug, 1313610811
+-reflex, 2642521732
+-nomultigpu, 3691212280
+-sse4, 1849011768
+146879290
+-sse2, 4274893216
+-dx11debugbreak, 131549787
+-renderdoc, 1980692650
+-ignoredxsupportcfg, 966457197
+-maxtexturepoolsize_2gb, 2219828148
+1562981286
+-shaderdebugging, 1568951001
+-dx11_skip_swap_chains, 3576281813
+-shaderstats, 4221164810
+-dxwarp, 4184646854
+-tools, 197456290
+-force-warn-no-adapters, 3271327671
+-no_render_thread_priority, 2680174466
+-dx11renderthreadstack, 2369720803
+-maxdxlevel, 2916934716
+-maxtextureres_2gb, 915504071
+-ags_async_shaders, 643183949
+-noinitfallbacktextures, 2462688185
+-disable_async_shaders, 1843755095
+-autoconfig, 3596328012
+1145230473
+-onethreadpool, 3430089553
+-nogammaramp, 3732322922
+-no_dx11_extensions, 180264111
+-autoconfig_level, 1997326025
+-renderdoc_capture_validation_errors, 1238242786
+284081097
+-sse3, 2776830954
+783739508
+-antilag, 760425684
+-noantilag, 2848325155
+-suppressdx9, 1027572879
+441297243
+-swap_chain_as_is, 633101115
+825867510
+7
+======== rendersystemempty.dll ========
+-sse3, 2776830954
+-renderdoc, 1980692650
+-sdl_displayindex, 984772713
+-autoconfig_level, 1997326025
+-avx, 3020312170
+-adapter, 871401063
+-tools, 197456290
+-autoconfig, 3596328012
+825867510
+-shaderstats, 4221164810
+-sse4, 1849011768
+-maxdxlevel, 2916934716
+-ignoredxsupportcfg, 966457197
+1145230473
+-maxtextureres, 4068712167
+-noinitfallbacktextures, 2462688185
+-force_recommend_dx11, 1014489924
+-renderdoc_capture_validation_errors, 1238242786
+1562981286
+-maxtextureres_2gb, 915504071
+-noconfig, 4015530479
+-sse2, 4274893216
+======== rendersystemvulkan.dll ========
+-reflex, 2642521732
+-vulkan_disable_khr_shader_clock, 2626482410
+-force_recommend_dx11, 1014489924
+-vulkan_disable_steam_app_shader_cache, 3210079187
+-vulkan_fossilize_log_verbose, 553718269
+-noassert, 1067982513
+-rs_nofallback, 3129137855
+-onethreadpool, 3430089553
+-sse2, 4274893216
+-vulkan_enable_ext_pipeline_robustness, 1450036158
+-multigpu, 1731710107
+-r_vulkan_render_threads, 564846076
+-antilag, 760425684
+-noreflex, 1548402123
+-vulkan_disable_khr_buffer_device_address, 1602918682
+-nogpuraytracing, 3400649128
+-sse3, 2776830954
+-vulkan_disable_khr_separate_depth_stencil_layouts, 1277924399
+-vulkan_vma_shutdown, 3215873099
+-vulkan_disable_fossilize_whitelist, 2414162262
+-autoconfig, 3596328012
+1944714247
+-vulkan_disable_khr_swapchain_mutable_format, 3649009234
+-vulkan_disable_pipeline_cache, 3729780277
+-vulkan_preload_fossilize, 4213386972
+-vulkan_disable_khr_present_wait, 2777541204
+-vulkan_trim_all_command_pools, 919484247
+-vulkan_disable_ext_multi_draw, 212502428
+-noconfig, 4015530479
+825867510
+-vulkan_disable_amd_memory_overallocation_behavior, 3370526142
+-tools, 197456290
+-noantilag, 2848325155
+-vulkan_enable_validation, 3431103476
+-renderdoc_capture_validation_errors, 1238242786
+-maxdxlevel, 2916934716
+-vulkan_disable_ext_extended_dynamic_state_3, 2717407942
+-renderdoc, 1980692650
+-nomultigpu, 3691212280
+-vulkan_disable_ext_memory_budget, 1626377711
+-ignoredxsupportcfg, 966457197
+-vulkan_disable_ext_mesh_shaders, 1471640956
+1145230473
+146879290
+1242785521
+-vulkan_metal_validation, 3483772851
+-noinitfallbacktextures, 2462688185
+-gpuraytracing, 3529211103
+-vulkan_disable_graphics_pipeline_library, 3792739516
+-vulkan_allow_cpu, 2645115470
+-vulkan_disable_khr_dynamic_rendering, 2888494261
+-vulkan_disable_swapchain_sampling, 1494091466
+-vulkan_disable_steam_downloaded_shader_cache, 1222989069
+-maxtexturepoolsize_2gb, 2219828148
+-vulkan_aggressive_command_pool_rebalancing_2gb, 3588170544
+-vulkan_disable_ext_pipeline_creation_cache_control, 2479980372
+-vulkan_disable_external_subpass_dependency, 991329886
+-vulkan_disable_khr_fragment_shading_rate, 405664701
+-vulkan_depth_texture_as_r32f, 1440958426
+-vulkan_disable_async_compute, 1622338526
+-adapter, 871401063
+-vulkan_ignore_minspec, 4221873224
+-vulkan_validation_error_assert, 3309685411
+-vulkan_allow_virtual_gpu, 1269979658
+-autoconfig_level, 1997326025
+-vulkan_enable_nv_raytracing_validation, 1957510917
+2346691913
+-vulkan_disable_ext_extended_dynamic_state, 1578375863
+3104695209
+-vulkan_validation_info, 3305840807
+-vulkan_validation_warnings, 3720824177
+-sgpu, 910340513
+-vulkan_descriptor_sets_per_pool, 2709253051
+-vulkan_disable_steam_shader_cache, 3417464481
+-vulkan_enable_robustness, 3538741073
+-vulkan_aggressive_command_pool_rebalancing, 480927572
+1562981286
+-sdl_displayindex, 984772713
+-vulkan_disable_ext_load_store_op_none, 493243299
+-vulkan_disable_khr_ray_tracing_position_fetch, 164863566
+-vulkan_disable_ext_swapchain_maintenance1, 1455395299
+-no_render_thread_priority, 2680174466
+-maxtextureres_2gb, 915504071
+-vulkan_force_sm60, 3151012696
+-vulkan_disable_device_coherent_allocations, 464878866
+-vulkan_enable_google_display_timing, 229613382
+-vulkan_disable_ext_full_screen_exclusive, 1814560080
+-vulkan_disable_khr_compute_shader_derivatives, 1565891499
+-vulkan_validation_error_exit_success, 2601499734
+284081097
+-vulkan_trim_all_command_pools_2gb, 1993798735
+-vulkan_disable_ext_conditional_rendering, 2429838881
+-vulkan_disable_ext_depth_bias_control, 1072387495
+-vulkan_disable_khr_shader_integer_dot_product, 1735596800
+-disable_async_shaders, 1843755095
+-vulkan_trim_command_pools_2gb, 857016567
+-vulkan_disable_ext_memory_priority, 3227945026
+-vulkan_enable_ext_device_generated_commands, 1183232867
+-vulkan_cmd_buffer_pool_size, 3046470404
+-vulkan_disable_ext_extended_dynamic_state_2, 2989622753
+-vulkanrenderthreadstack, 2194226460
+-vulkan_disable_ext_validation_cache, 3540448974
+-avx, 3020312170
+783739508
+-vulkan_disable_ext_pageable_device_local_memory, 1927090771
+-vulkan_force_cpu, 482146288
+-vulkan_disable_khr_synchronization2, 2537109703
+-maxtextureres, 4068712167
+-sse4, 1849011768
+-vulkan_vma_defrag_each_frame, 665336905
+-vulkan_dump_shaders, 3614272223
+-shaderstats, 4221164810
+4138247883
+7
+-vulkan_trim_command_pools, 4193819449
+-vulkan_ignore_ctdl_bindless_non_blocking_issues, 2915211924
+-shaderdebugging, 1568951001
+-vulkan_alloc_callbacks, 1549204801
+======== resourcecompiler.dll ========
+-vconsole, 1170955440
+-coop_fullscreen, 3231905404
+-steam, 53536153
+-h, 1193756079
+2728263361
+-con_logfile, 1234987984
+796564511
+-vsync, 2767798943
+-tools, 197456290
+-novsync, 2561736516
+-sse4, 1849011768
+-nv, 1751934355
+-full_memory_dumps, 2037331155
+-nologstdiotofile, 803571430
+-gpuraytracing, 3529211103
+-dev, 574071661
+-sw, 628725258
+3701529680
+-rendertask, 474059147
+-testmode, 869412437
+-no_tools_ignorechildprocess_env, 631902775
+264265537
+166991432
+1479722877
+-sdl_log, 2284796977
+-bigwindow, 2579478974
+1788282970
+-addon, 1321118783
+-emaildumps_to, 4251604169
+1031966263
+327937524
+-fastpack, 2129537917
+-consolelog_append, 1849850619
+-experimental_smartprops, 162242015
+-border, 3067777132
+-fpexcept, 1065043357
+-empty, 1166302021
+-gameinput, 487301348
+1668489442
+-dx11, 2325266050
+-publiccontent, 1070638683
+-safe_mode, 642946094
+-game, 602672632
+-allow_exe_in_build_dir, 453874011
+-y, 439648255
+502640937
+-skip_driver_check, 921320528
+-width, 2313820763
+-avx, 3020312170
+-consolelog, 2571514003
+-vconport, 3008056938
+-insecure, 2406745183
+-crash_resource_compiler, 3897519340
+3489200015
+-highdpi, 208895721
+-emaildumps_subject_extra, 720252668
+500051639
+-novconsole, 12931391
+-fs, 2587423816
+1789359416
+-unbufferedio, 2502882823
+-mobile, 3328603821
+-height, 297341175
+-forcenovsync, 1039533358
+1997211886
+-addon_path, 2574785511
+-devcontent, 3985700755
+-anim_compile_stats, 3254258045
+-vrad3, 3532387015
+-force_new_recommend, 2752896179
+-conrotate, 1937598139
+-adapter, 871401063
+93284877
+-sse2, 4274893216
+-fullscreen, 3232779058
+-vulkan, 259954249
+-x, 3793427571
+-condebug, 450968086
+-nop4, 3299646795
+-rs_reset, 2885683845
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-attachtodebugger, 39359517
+-normalvis, 1743092877
+-windowless, 2653084028
+-resourcecompiler_log_compile_stats, 4107478494
+-sse3, 2776830954
+-notoolsdev, 885745964
+-consolelog_notimestamp, 1615887145
+-novpk, 2345050509
+-contentroot, 1063703514
+-resizing, 446691998
+-extract_sentence, 2260033171
+-showasserts, 658464540
+-breakimmediately, 1112866904
+-dxwarp, 4184646854
+-msaa, 1449492945
+-allow_non_tools_paths, 1133895985
+-noborder, 85611144
+-rendersystemdll, 3672818219
+-w, 1610683921
+======== resourcesystem.dll ========
+-resource_system_verbose, 536865351
+-legacy_tools_resource_listeners, 553687688
+-force_all_resource_loads_to_fail, 2114520145
+407190304
+-resource_exit_after_time, 4216380365
+-tools, 197456290
+-enable_spread_finalize, 931820494
+-start_resource_profiling, 2564211422
+======== scenefilecache.dll ========
+-sse3, 2776830954
+-avx, 3020312170
+-tools, 197456290
+-sse2, 4274893216
+-sse4, 1849011768
+======== scenesystem.dll ========
+-sse2, 4274893216
+-avx, 3020312170
+-sse3, 2776830954
+-tools, 197456290
+-sse4, 1849011768
+======== schemasystem.dll ========
+-tools, 197456290
+-sse4, 1849011768
+-sse3, 2776830954
+-sse2, 4274893216
+3647772848
+-schema_check_local_cross_depend, 4228082124
+-avx, 3020312170
+======== soundsystem.dll ========
+-memory_map_sound, 2049873468
+-directsound, 804019958
+-avx, 3020312170
+-sse4, 1849011768
+-sse3, 2776830954
+-sdlaudio, 847762038
+-windowsaudio, 3042533443
+-sse2, 4274893216
+-nosound, 3676274044
+-tools, 197456290
+-sdlaudiodriver, 3908291797
+======== steamaudio.dll ========
+-sse2, 4274893216
+-sse4, 1849011768
+-buildmachine, 3108076155
+-steamaudio_validation, 1906756612
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-avx, 3020312170
+-tools, 197456290
+-sse3, 2776830954
+======== netgraph_subtool.dll ========
+-sse4, 1849011768
+-sse2, 4274893216
+-sse3, 2776830954
+-avx, 3020312170
+======== toolframework2.dll ========
+-tools, 197456290
+-recompile_special_dependency_mismatches, 2160483264
+-new_default_font, 4118096054
+-disable_loading_tool_settings, 1336680278
+564320376
+-no_high_dpi_scaling, 4267361586
+-sse2, 4274893216
+-addon, 1321118783
+-sse4, 1849011768
+-disable_asset_autorecompile, 3317354165
+4261927495
+-wait_before_assetsystem_startup, 2245844626
+-enable_qaccessible, 1129441271
+-nostyle, 2189129855
+-disableassetsystem, 1937712909
+21
+-sse3, 2776830954
+-avx, 3020312170
+======== cs2_item_editor.dll ========
+-sse2, 4274893216
+-sse3, 2776830954
+-sse4, 1849011768
+-avx, 3020312170
+-tools, 197456290
+-toolsquiet, 3513791888
+======== cs2_workshop_manager.dll ========
+-sse2, 4274893216
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-sse4, 1849011768
+-avx, 3020312170
+-sse3, 2776830954
+======== hammer.dll ========
+1668489442
+-vsync, 2767798943
+2327613413
+3489200015
+1031966263
+-emaildumps_to, 4251604169
+-no_environment_maps, 549658686
+-nop4sync, 2170082451
+-retail, 2772236617
+3627260051
+-experimental_smartprops, 162242015
+-tools, 197456290
+-no_hammer_crash_recovery, 3197694453
+-emaildumps_subject_extra, 720252668
+-workshop, 1055901649
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-sse2, 4274893216
+-testmode, 869412437
+-toolsquiet, 3513791888
+-noasync_shaders, 364717528
+1788282970
+-smoothtoolcamera, 2258526725
+2706099331
+-usep4port, 486437523
+-avx, 3020312170
+-hammer_test_node, 287341725
+-sse4, 1849011768
+-retry_on_error, 2362685300
+-fullimport, 3981707907
+-hammer_iso_surface, 3874962081
+-sse3, 2776830954
+======== met.dll ========
+-noassert, 1067982513
+-avx, 3020312170
+-nostyle, 2189129855
+-sse3, 2776830954
+-sse4, 1849011768
+-sse2, 4274893216
+-metreset, 4206253574
+-tools, 197456290
+======== modeldoc_editor.dll ========
+-dev, 574071661
+-sse4, 1849011768
+-vsync, 2767798943
+-smoothtoolcamera, 2258526725
+-tools, 197456290
+-toolsquiet, 3513791888
+-rndebug, 4267248321
+2706099331
+-sse2, 4274893216
+-sse3, 2776830954
+-avx, 3020312170
+======== pet.dll ========
+-smoothtoolcamera, 2258526725
+-tools, 197456290
+327937524
+-sse4, 1849011768
+-sse2, 4274893216
+502640937
+2706099331
+-avx, 3020312170
+-sse3, 2776830954
+-toolsquiet, 3513791888
+-vsync, 2767798943
+======== postprocessingeditor.dll ========
+-avx, 3020312170
+-smoothtoolcamera, 2258526725
+2706099331
+-sse4, 1849011768
+-sse3, 2776830954
+-tools, 197456290
+-vsync, 2767798943
+-toolsquiet, 3513791888
+-sse2, 4274893216
+======== sfm.dll ========
+-msaa, 1449492945
+3489200015
+-smoothtoolcamera, 2258526725
+-sse2, 4274893216
+-tools, 197456290
+-vsync, 2767798943
+-sfm_autolayoff, 1443179404
+-sfm_noautosave, 1057540748
+-sfm_layoffshotlist, 900730917
+-sse4, 1849011768
+-sfm_layoffshotrange, 3839887312
+-nop4, 3299646795
+-sfm_moviesettings, 684621666
+-sfm_shadow_resolution, 3184142761
+-nostartwizard, 2434038314
+-sfm_rendersettings, 878179845
+1668489442
+-avx, 3020312170
+-sfm_loadsession, 1161724417
+-sfm_layoffframerange, 3606865888
+-sse3, 2776830954
+======== subrecteditor.dll ========
+-toolsquiet, 3513791888
+-sse3, 2776830954
+-sse4, 1849011768
+-avx, 3020312170
+2706099331
+-sse2, 4274893216
+======== toolscenenodes.dll ========
+-experimental_smartprops, 162242015
+1031966263
+1788282970
+-sse3, 2776830954
+-avx, 3020312170
+1668489442
+-tools, 197456290
+-sse4, 1849011768
+-no_hierarchical_vpk_memory_mapping, 3378808146
+3489200015
+-sse2, 4274893216
+======== v8system.dll ========
+-tools, 197456290
+======== valve_webm.dll ========
+-sse2, 4274893216
+-sse4, 1849011768
+-sse3, 2776830954
+-avx, 3020312170
+======== vconcomm.dll ========
+-vconsole, 1170955440
+2372379517
+-vconmax, 397274668
+-vconport, 3008056938
+-dev, 574071661
+-consoleapp, 1647506426
+-enable_qaccessible, 1129441271
+-vconbuffer, 4060445725
+-tools, 197456290
+======== vfx_dx11.dll ========
+-sse4, 1849011768
+-avx, 3020312170
+-sse3, 2776830954
+-tools, 197456290
+-sse2, 4274893216
+3521769074
+======== visbuilder.dll ========
+-sse3, 2776830954
+-avx, 3020312170
+-sse4, 1849011768
+-tools, 197456290
+-sse2, 4274893216
+======== vphysics2.dll ========
+-tools, 197456290
+-sse2, 4274893216
+-avx, 3020312170
+-allsymmessages, 385212326
+-sse4, 1849011768
+-sse3, 2776830954
+-validate, 1850967690
+-shelpers_dwarf_symbol_path, 2927921579
+-ut, 552294149
+-unittest, 1677567567
+-allsymmoredetailed, 227921847
+-allsymdetailed, 2820614380
+======== vrad3.dll ========
+-x, 3793427571
+-vconport, 3008056938
+500051639
+-safe_mode, 642946094
+93284877
+-consolelog_notimestamp, 1615887145
+-dx11, 2325266050
+-w, 1610683921
+-unbufferedio, 2502882823
+2728263361
+-tools, 197456290
+-sse2, 4274893216
+-windowless, 2653084028
+-showasserts, 658464540
+-force_new_recommend, 2752896179
+-no_tools_ignorechildprocess_env, 631902775
+-novconsole, 12931391
+-sw, 628725258
+-allthreads, 4158133067
+-sse3, 2776830954
+-fs, 2587423816
+-avx, 3020312170
+-conrotate, 1937598139
+-msaa, 1449492945
+-condebug, 450968086
+-highdpi, 208895721
+-gpuraytracing, 3529211103
+-outdir, 4133462699
+-devcontent, 3985700755
+-gameinput, 487301348
+-rs_reset, 2885683845
+-addon, 1321118783
+-game, 602672632
+-skip_driver_check, 921320528
+-consolelog_append, 1849850619
+-resizing, 446691998
+-forcenovsync, 1039533358
+-novpk, 2345050509
+-novsync, 2561736516
+-threads, 2503439279
+-vconsole, 1170955440
+-border, 3067777132
+-h, 1193756079
+1997211886
+-addon_path, 2574785511
+-publiccontent, 1070638683
+-breakimmediately, 1112866904
+-consolelog, 2571514003
+-allow_exe_in_build_dir, 453874011
+-project, 2522317165
+-contentroot, 1063703514
+-vulkan, 259954249
+-dev, 574071661
+-insecure, 2406745183
+-bigwindow, 2579478974
+-rendersystemdll, 3672818219
+-nologstdiotofile, 803571430
+-attachtodebugger, 39359517
+-sse4, 1849011768
+-adapter, 871401063
+-y, 439648255
+-dxwarp, 4184646854
+-indir, 746896964
+-width, 2313820763
+-entrypoint, 2708616278
+-steam, 53536153
+-fpexcept, 1065043357
+3701529680
+-coop_fullscreen, 3231905404
+-con_logfile, 1234987984
+-height, 297341175
+-vsync, 2767798943
+-rendertask, 474059147
+-notoolsdev, 885745964
+-sdl_log, 2284796977
+-nv, 1751934355
+-noborder, 85611144
+-allow_non_tools_paths, 1133895985
+796564511
+-fullscreen, 3232779058
+-empty, 1166302021
+-script, 625953965
+======== vscript.dll ========
+-tools, 197456290
+-sse3, 2776830954
+-luajit, 3945205914
+-sse2, 4274893216
+-avx, 3020312170
+-vscriptdebug_script, 3917576620
+-sse4, 1849011768
+-luadbg_inspector, 2605530460
+======== worldrenderer.dll ========
+-avx, 3020312170
+1668489442
+-tools, 197456290
+-sse4, 1849011768
+-sse3, 2776830954
+3489200015
+-sse2, 4274893216

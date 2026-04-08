@@ -1,0 +1,10 @@
+[package]
+name = "cs-hash-reversal"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+goblin = "0.8"
+iced-x86 = "1.21"
+anyhow = "1.0"
+walkdir = "2.5.0"

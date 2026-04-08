@@ -1,0 +1,89 @@
+diff --git a/OpenCL/m25700_a0-optimized.cl b/OpenCL/m25700_a0-optimized.cl
+index 82d7e8924..39605cd9e 100644
+--- a/OpenCL/m25700_a0-optimized.cl
++++ b/OpenCL/m25700_a0-optimized.cl
+@@ -15,40 +15,55 @@
+ #include M2S(INCLUDE_PATH/inc_simd.cl)
+ #endif
+ 
+-DECLSPEC u32 MurmurHash (const u32 seed, PRIVATE_AS const u32 *w, const u32 pw_len)
++DECLSPEC u32x MurmurHash (const u32 seed, PRIVATE_AS const u32x *w, const u32x pw_len)
+ {
+-  u32 hash = seed;
+-
+-  #define M 0x7fd652ad
+-  #define R 16
+-
+-  hash += 0xdeadbeef;
+-
+-  const u32 blocks = pw_len / 4;
+-
+-  if (pw_len >= 4)
++  #define M 0x5bd1e995
++  #define R 24
++  // Initialize hash with seed ^ len (vectorized)
++  u32x h = seed ^ pw_len;
++  // Hashcat's apply_rules_vect_optimized fills w[16] (up to 64 bytes)
++  // We must loop through all possible words and use masks for the length
++  for (int i = 0; i < 16; i++)
+   {
+-    for (u32 i = 0; i < blocks; i++)
+-    {
+-      const u32 tmp = (hash + w[i]) * M;
+-
+-      hash = tmp ^ (tmp >> R);
+-    }
++    const u32x k = w[i];
++    const u32x current_pos = i * 4;
++    // Condition: Is this a full 4-byte block?
++    const u32x is_full = (current_pos + 4) <= pw_len;
++    
++    // Condition: Is this the tail block (1-3 bytes)?
++    const u32x is_tail = (current_pos < pw_len) && ((current_pos + 4) > pw_len);
++    // --- Full Block Logic ---
++    u32x k_tmp = k;
++    k_tmp *= M;
++    k_tmp ^= k_tmp >> R;
++    k_tmp *= M;
++    u32x h_full = h * M;
++    h_full ^= k_tmp;
++    // --- Tail Logic (replaces the switch statement) ---
++    const u32x leftover = pw_len & 3;
++    u32x mask = 0;
++    mask = select (mask, 0x000000ff, leftover >= 1);
++    mask = select (mask, 0x0000ffff, leftover >= 2);
++    mask = select (mask, 0x00ffffff, leftover >= 3);
++    
++    u32x h_tail = h ^ (k & mask);
++    h_tail *= M;
++  #if defined(VECT_SIZE) && VECT_SIZE > 1
++    // Apply updates only where the conditions are true for each vector lane
++    h = select (h, h_full, is_full);
++    h = select (h, h_tail, is_tail);
++  #else
++    if (is_full) h = h_full;
++    else if (is_tail) h = h_tail;
++  #endif
+   }
+-
+-  const u32 tmp = (hash + w[blocks]) * M;
+-
+-  hash = (pw_len & 3) ? (tmp ^ (tmp >> R)) : hash;
+-
+-  hash *= M;
+-  hash ^= hash >> 10;
+-  hash *= M;
+-  hash ^= hash >> 17;
+-
++  // Finalization
++  h ^= h >> 13;
++  h *= M;
++  h ^= h >> 15;
+   #undef M
+   #undef R
+-
+-  return hash;
++  return h;
+ }
+ 
+ KERNEL_FQ KERNEL_FA void m25700_m04 (KERN_ATTR_RULES ())
