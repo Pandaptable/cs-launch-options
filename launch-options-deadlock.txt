@@ -725,5 +725,6 @@
 -world
 -worldwide
 -write_debug_path_trace_scene_info
--x-generic
+-x
+-generic
 -zero

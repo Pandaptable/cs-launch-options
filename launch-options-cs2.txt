@@ -1,11 +1,3 @@
--1080
--1600
--32bit
--3udwpmorphcomposite
--4gpu
--64bit
--64os
--8ryhpf_transmissive_sunlight
 -abandoned
 -abortprocessonserioustexturewarning
 -accessor
@@ -15,7 +7,6 @@
 -additionalpdbsearchpath
 -addon
 -addon_path
--aftermath
 -aggs
 -ags_async_shaders
 -all
@@ -34,7 +25,6 @@
 -allow_non_tools_paths
 -allow_no_lobby_connect
 -allow_third_party_software
--allow_verbose_logging
 -allreadonlyassets
 -allsymdetailed
 -allsymmessages
@@ -44,7 +34,6 @@
 -alt1
 -alt2
 -altgameroot
--anim
 -animation
 -animation-channel
 -animation-input
@@ -115,7 +104,6 @@
 -break_on_crash
 -bufferdebugstring
 -bugbait
--bugdebug
 -bugreporterdll
 -bugvoice
 -buildallcontentreadonly
@@ -136,15 +124,11 @@
 -camyawleft
 -camyawright
 -candidate
--category
 -ccsyntax
 -certificate
 -changelist
--chatwheel
--chatwheel_pingwheel
 -check
 -checkforuniquemeshneeds
--citadel_swtich_player_cam
 -class
 -classes
 -clean
@@ -154,9 +138,6 @@
 -cloth
 -cl_show_team_equipment
 -cmd
--cmsgclienttogcpurchasechargecostitemsresponse
--cmsgsteamdatagramgameserversessionestablished
--cmsgsteamdatagramhostedserveraddressplaintext
 -cold
 -collate
 -combineignore_disableshadowdepth
@@ -180,10 +161,8 @@
 -consolelog_notimestamp
 -consolelog_rotate
 -contentroot
--convars_visible_by_default
 -con_logfile
 -coop_fullscreen
--cplayer_getnewsteamannouncementstate_response
 -cpumonitoringstart
 -crash_resource_compiler
 -crc
@@ -196,7 +175,6 @@
 -csm_rot_x_plus
 -csm_rot_y_neg
 -csm_rot_y_plus
--csource2metrics_matchperfsummary_notification
 -cursor_scale_percent
 -curtimewarnings
 -customswf
@@ -239,7 +217,6 @@
 -disable_asset_autorecompile
 -disable_async_shaders
 -disable_auto_vpk_loading
--disable_consider_read_only_assets_out_of_date
 -disable_cursor_clip
 -disable_d3d9ex
 -disable_d3d9_hacks
@@ -317,7 +294,6 @@
 -file
 -filelist
 -filelist_filter
--filesystem_disable_check_case
 -fillvolume
 -filmgrain
 -filterassetfiles
@@ -343,10 +319,7 @@
 -forceskyvis
 -forcestartupmenu
 -forcexboxreconfig
--force_allow_coop_fullscreen
--force_allow_excl_fullscreen
 -force_all_resource_loads_to_fail
--force_assert_full_dialog
 -force_assert_sdl_dialog
 -force_battery_level
 -force_battery_level_battery
@@ -385,9 +358,6 @@
 -fullversion
 -full_memory_dumps
 -full_render_callback_clear
--g-type-private--dependants-array
--g-type-private--gtypeflags
--g-type-private--ifaceholder
 -g15
 -game
 -gameinput
@@ -401,7 +371,6 @@
 -game_particle_manager_event_destroy_involving
 -gamma20
 -gdb
--generic
 -geometry
 -gl
 -glcheckerrors
@@ -449,7 +418,6 @@
 -heapsize
 -height
 -help
--herochatwheel
 -hideconsole
 -hidehostip
 -high
@@ -490,12 +458,10 @@
 -instance
 -intan
 -interactivecaster
--internalbugs
 -internalbuild
 -internaliprequired
 -interpolation
 -interpolations
--in_ability_ping
 -ioidlecheck
 -ip
 -ip_relay
@@ -508,7 +474,6 @@
 -jitter
 -jlook
 -joints
--joy
 -jump
 -keepsources
 -keepstalezip
@@ -516,28 +481,7 @@
 -keep_gear
 -key
 -klook
--k_egcmsginitiatetraderesponse_theycannottrade
--k_egcmsginitiatetraderesponse_toorecentfriend
--k_egcmsguseitemresponse_itemused_itemsgranted
--k_emsgamisaccountincaptchagraceperiodresponse
--k_emsgamtwofactorrecoverauthenticatorresponse
--k_emsgbsresetpackagepurchaseratelimitresponse
--k_emsgclientrequestencryptedappticketresponse
--k_emsgclienttogccancelunfinalizedtransactions
--k_emsgclienttogcgetglobalmatchhistoryresponse
--k_emsgclienttogcreportplayerfrommatchresponse
--k_emsgdrmworkerprocessbackfilloriginalrequest
--k_emsgdrmworkerprocesssplitandinstallresponse
--k_emsgensureexecutescheduledtaskresponse_test
--k_emsggcrequeststoresalesdatauptodateresponse
--k_emsggmtestnextbuildschemaconversionresponse
--k_emsggscomputenewplayercompatibilityresponse
--k_emsgpsaddwalletcredittoshoppingcartresponse
--k_emsgremoteclientgetcontrollerconfigresponse
--k_emsgsmtestnextbuildschemaconversionresponse
--k_esteamdatagrammsg_setsecondaryaddressresult
 -language
--latewarp
 -launcherlanguage
 -launchersublanguage
 -leakcheck
@@ -557,11 +501,9 @@
 -lmvmemmb
 -lmvmin
 -lmvnoguard
--lnvppskymodelskyhorizoncolor
 -load_string_token_database
 -localcser
 -lods
--log
 -logwarnings
 -log_opened_files
 -lookatweapon
@@ -605,7 +547,6 @@
 -maxtextureres_2gb
 -mdlcontent
 -mem
--memory-
 -memory_map_sound
 -memstackstats_disable_pools
 -memstacktraceframes
@@ -614,7 +555,6 @@
 -metreset
 -met_fast_dcs
 -micro
--minidump_file_prefix
 -minidump_full
 -minidump_log_path
 -minluxelscale
@@ -656,10 +596,6 @@
 -networkspewfakefields
 -networkvar_validate
 -network_class_conform_check
--network_disconnect_direct_connect_reservation
--network_disconnect_kicked_competitivecooldown
--network_disconnect_localproblem_networkconfig
--network_disconnect_reject_invalidsteamcertlen
 -net_no_parallel_build
 -net_port_try
 -newdialogs
@@ -765,7 +701,6 @@
 -normalvis
 -norussian
 -nosave
--noscreenshot
 -noscripting
 -noshaderapi
 -noshaderopts
@@ -811,7 +746,6 @@
 -no_high_dpi_scaling
 -no_phonemes
 -no_prewarm_panorama
--no_render_thread_affinity
 -no_render_thread_priority
 -no_scaleform_menu_on_boot
 -no_spread_finalize
@@ -833,7 +767,6 @@
 -outtan
 -overridelean
 -override_vpk
--owner
 -pakxv_lowviolence
 -panoconsole
 -panorama
@@ -842,7 +775,6 @@
 -parallelhammerproceduralupdate
 -parallelhammerrenderables
 -particles
--particle_system_manager_event_update_fallback
 -pass_vk_processkey
 -pause
 -pauseiferror
@@ -872,9 +804,8 @@
 -prepfors2
 -pressdemo
 -presskeytoexit
--prewarm_panorama
 -primarysound
--priority
+-processheap
 -processheap
 -processheapzeromem
 -product
@@ -916,7 +847,6 @@
 -qwindowgeometry
 -qwindowicon
 -qwindowtitle
--radialabilities
 -radialradio
 -radialradio2
 -radialradio3
@@ -930,7 +860,6 @@
 -recapvid
 -recompile_special_dependency_mismatches
 -recordperfstats
--reduceecoreusage
 -ref
 -reflectiontexturesize
 -reflex
@@ -955,12 +884,10 @@
 -reservelowmem
 -reservewarnmb
 -reset
--reset_keybindings
 -resizing
 -reslistdir
 -reslistmap
 -resourcecompiler_log_compile_stats
--resource_debug_id
 -resource_exit_after_time
 -resource_leaks
 -resource_system_verbose
@@ -988,7 +915,6 @@
 -r_emulate_gl
 -r_max_device_threads
 -r_vulkan_render_threads
--s2-mix-blend-mode
 -safe
 -safe_mode
 -save
@@ -1007,14 +933,12 @@
 -sdlaudiodriver
 -sdl_displayindex
 -sdl_log
--sdl_testmainthread
 -sdl_video_driver
 -serverlogging
 -servertime
 -session
 -set_locale_disable
 -set_power_qos_disable
--severity
 -sfm_autolayoff
 -sfm_layoffframerange
 -sfm_layoffshotlist
@@ -1049,8 +973,6 @@
 -showmatchesonly
 -showscores
 -showvprof
--showwarning
--show_ability_upgrade_radial
 -show_none
 -show_unknown_only
 -show_used_combos
@@ -1060,7 +982,6 @@
 -skiploadingworkshopaddons
 -skiptype
 -skip_driver_check
--slowmsgreceipt
 -small
 -smoothtoolcamera
 -snallownoauth
@@ -1125,7 +1046,6 @@
 -strafe
 -stream
 -strictportbind
--strict_subclass_load
 -strict_type_combinations
 -stringtabledebug
 -stringtables
@@ -1189,8 +1109,6 @@
 -tvprimaryonly
 -tx-struct
 -uidev
--ui_page_manager_auto_delete
--ui_page_manager_disable_auto_delete
 -unbufferedio
 -unbuffered_io
 -unittest
@@ -1217,7 +1135,6 @@
 -usereslistfile
 -usestandarderror
 -usetcp
--use_local_localization_file
 -use_or_reload
 -use_panel_id_in_rt_name
 -use_raw_signal_handler
@@ -1238,8 +1155,6 @@
 -verbose
 -verbose-kubejobs
 -verboseentities
--vertex
--vertex_color
 -vguifocus
 -vguimessages
 -vgui_drawtree
@@ -1371,6 +1286,7 @@
 -weaponmodelcache
 -weapon_anim_prefab
 -weights
+-weights
 -widgetcount
 -width
 -win32
@@ -1396,7 +1312,6 @@
 -ze-opt-disable
 -ze-opt-large-register-file
 -ze-take-global-address
--zero
 -zip_endofcentraldirrecord
 -zoneprojectiontexturesize
 -zoom
