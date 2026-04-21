@@ -17,6 +17,7 @@
 +global_stats
 +load
 +map
++mat_clearshadercache
 +ms_player_unaward
 +net_port_try
 +playcast
