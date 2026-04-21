@@ -12,7 +12,7 @@
 -disable_workshop_command_filtering, 1432471252
 -noscripting, 1526587341
 -curtimewarnings, 1646659829
-1740575824
++dev_simulate_gcrecvonly, 1740575824
 -gamestatsfileoutputonly, 1742906026
 -sse4, 1849011768
 -noclearsave, 1877996950
@@ -28,6 +28,6 @@
 3489200015
 -internaliprequired, 3515233334
 -vscriptdebug, 3616760377
-4037768485
++dev_simulate_gcdown, 4037768485
 -vscriptdebug_game, 4265542941
 -sse2, 4274893216

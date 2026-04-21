@@ -8,7 +8,7 @@
 -batchwarnings, 1715525156
 -sse4, 1849011768
 -shaders_force_recompile, 2122897934
-2196080635
++mat_clearshadercache, 2196080635
 -insecure, 2406745183
 -vulkan_use_android_vcs, 2776628610
 -sse3, 2776830954

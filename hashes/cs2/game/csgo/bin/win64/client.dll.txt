@@ -3,7 +3,7 @@
 -nosteam, 112808614
 -trusted, 165799374
 -tools, 197456290
-274617796
++playdemo, 274617796
 295913822
 -buildcubemaps, 375552886
 -all_languages, 455342288
@@ -25,17 +25,17 @@
 -noscripting, 1526587341
 -network_class_conform_check, 1561589398
 -curtimewarnings, 1646659829
-1728870504
-1740575824
++playcast, 1728870504
++dev_simulate_gcrecvonly, 1740575824
 -gamestatsfileoutputonly, 1742906026
 -fallback2, 1836540640
 -sse4, 1849011768
 -noclearsave, 1877996950
 -autoconfig_level, 1997326025
 -fallback1, 2020486640
-2040773423
++connect, 2040773423
 -gamestatslogging, 2295112737
-2368753337
++csgo_econ_action_preview, 2368753337
 -playtest, 2395652043
 -insecure, 2406745183
 -retail, 2772236617
@@ -45,7 +45,7 @@
 -insecure_forced_by_launcher, 3075429066
 -no_hierarchical_vpk_memory_mapping, 3378808146
 -perfectworld, 3451720338
-3458441557
++connect_lobby, 3458441557
 3489200015
 -internaliprequired, 3515233334
 -autoconfig, 3596328012
@@ -53,9 +53,9 @@
 -defaultgamedir, 3762323426
 -autodetectedperfectworld, 3778424420
 -enabledownloadtest, 3803204183
-3861218940
++csgo_download_match, 3861218940
 -noconfig, 4015530479
-4037768485
++dev_simulate_gcdown, 4037768485
 -vscriptdebug_game, 4265542941
 -removesparseshadowtree, 4269225322
 -sse2, 4274893216
