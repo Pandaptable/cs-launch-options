@@ -1,0 +1,61 @@
+-valveserver, 34501765
+-steam, 53536153
+-nosteam, 112808614
+-trusted, 165799374
+-tools, 197456290
+274617796
+295913822
+-buildcubemaps, 375552886
+-all_languages, 455342288
+-rendertask, 474059147
+-no_environment_maps, 549658686
+-no_prewarm_panorama, 575116422
+-game, 602672632
+-usebanlist, 644336921
+-nodashboard, 667815781
+-buildsparseshadowtree, 719891883
+-pressdemo, 886486246
+-buildcubemaps_keep_inputs, 944415195
+-vscript_allow_local_disk_access, 969735938
+-untrusted, 1016118749
+-debugwelcome, 1042346542
+-find_unlocalized, 1116175964
+-entkv_use_schema, 1190268809
+-gamestatsloggingtofile, 1254442816
+-noscripting, 1526587341
+-network_class_conform_check, 1561589398
+-curtimewarnings, 1646659829
+1728870504
+1740575824
+-gamestatsfileoutputonly, 1742906026
+-fallback2, 1836540640
+-sse4, 1849011768
+-noclearsave, 1877996950
+-autoconfig_level, 1997326025
+-fallback1, 2020486640
+2040773423
+-gamestatslogging, 2295112737
+2368753337
+-playtest, 2395652043
+-insecure, 2406745183
+-retail, 2772236617
+-sse3, 2776830954
+-maxplayers, 3016700309
+-avx, 3020312170
+-insecure_forced_by_launcher, 3075429066
+-no_hierarchical_vpk_memory_mapping, 3378808146
+-perfectworld, 3451720338
+3458441557
+3489200015
+-internaliprequired, 3515233334
+-autoconfig, 3596328012
+-vscriptdebug, 3616760377
+-defaultgamedir, 3762323426
+-autodetectedperfectworld, 3778424420
+-enabledownloadtest, 3803204183
+3861218940
+-noconfig, 4015530479
+4037768485
+-vscriptdebug_game, 4265542941
+-removesparseshadowtree, 4269225322
+-sse2, 4274893216

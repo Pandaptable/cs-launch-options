@@ -1,62 +1,103 @@
 use anyhow::{Context, Result};
 use goblin::pe::PE;
 use iced_x86::{Decoder, DecoderOptions, Instruction, Mnemonic, OpKind, Register};
-use std::collections::HashMap; // Changed from HashSet to HashMap
+use std::collections::HashMap;
 use std::env;
-use std::fs::{self, File, OpenOptions};
+use std::fs::{self, OpenOptions};
 use std::io::Write;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 
 fn main() -> Result<()> {
-	let args: Vec<String> = env::args().collect();
+	let mut target_dir = String::new();
+	let mut base_dir_arg = String::new();
+	let mut output_dir_arg = String::from("./hashes");
+	let mut debug_mode = false;
 
-	// Check for the debug flag
-	let debug_mode = args.contains(&"-debug".to_string());
-
-	// Find the first argument that isn't the executable itself and isn't the -debug flag
-	let target_dir = match args.iter().skip(1).find(|arg| *arg != "-debug") {
-		Some(dir) => dir,
-		None => {
-			println!("Usage: {} <path_to_directory_with_dlls> [-debug]", args[0]);
-			return Ok(());
+	let mut args = env::args().skip(1);
+	while let Some(arg) = args.next() {
+		match arg.as_str() {
+			"-debug" => debug_mode = true,
+			"--base" => {
+				if let Some(base) = args.next() {
+					base_dir_arg = base;
+				} else {
+					println!("[-] Error: --base requires a directory name or path argument.");
+					return Ok(());
+				}
+			}
+			"--out" | "-o" => {
+				if let Some(out) = args.next() {
+					output_dir_arg = out;
+				} else {
+					println!("[-] Error: --out requires a directory path argument.");
+					return Ok(());
+				}
+			}
+			_ => {
+				if target_dir.is_empty() {
+					target_dir = arg;
+				}
+			}
 		}
-	};
+	}
 
-	let output_filename = "hashes.txt";
+	if target_dir.is_empty() || base_dir_arg.is_empty() {
+		println!(
+			"Usage: <executable> <target_dir> --base <base_folder> [--out <output_dir>] [-debug]"
+		);
+		println!("Example: executable \"C:\\..\\game\\bin\\win64\" --base game --out ./my_results");
+		return Ok(());
+	}
 
-	let mut file = OpenOptions::new()
-		.create(true)
-		.write(true)
-		.append(true)
-		.open(output_filename)
-		.context("Failed to open output file for appending")?;
+	let target_dir_path = Path::new(&target_dir);
 
 	println!("[*] Recursively scanning directory: {}", target_dir);
+	println!("[*] Base directory set to: {}", base_dir_arg);
+	println!("[*] Output directory set to: {}", output_dir_arg);
 	if debug_mode {
 		println!("[*] Debug mode enabled. Addresses will be logged.");
 	}
 
-	for entry in WalkDir::new(target_dir).into_iter().filter_map(|e| e.ok()) {
+	for entry in WalkDir::new(target_dir_path)
+		.into_iter()
+		.filter_map(|e| e.ok())
+	{
 		let path = entry.path();
 
-		if path.is_file() && path.extension().and_then(|e| e.to_str()) == Some("dll") {
+		if path.is_file()
+			&& matches!(
+				path.extension().and_then(|s| s.to_str()),
+				Some("dll" | "exe")
+			) {
 			println!("\n[*] Analyzing {}...", path.display());
 
-			if let Err(e) = process_dll(&path, &mut file, debug_mode) {
+			if let Err(e) = process_dll(
+				&path,
+				target_dir_path,
+				&base_dir_arg,
+				&output_dir_arg,
+				debug_mode,
+			) {
 				println!("[-] Failed to process {}: {}", path.display(), e);
 			}
 		}
 	}
 
 	println!(
-		"\n[+] All done! Results appended to {} in your current directory.",
-		output_filename
+		"\n[+] All done! Results saved to the {} directory.",
+		output_dir_arg
 	);
 	Ok(())
 }
 
-fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()> {
+fn process_dll(
+	dll_path: &Path,
+	target_dir: &Path,
+	base_dir_arg: &str,
+	output_dir_arg: &str,
+	debug_mode: bool,
+) -> Result<()> {
 	let buffer = fs::read(dll_path)?;
 
 	let pe = match PE::parse(&buffer) {
@@ -188,9 +229,68 @@ fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()>
 
 	if !extracted_hashes.is_empty() {
 		let filename = dll_path.file_name().unwrap_or_default().to_string_lossy();
-		writeln!(file, "======== {} ========", filename)?;
 
-		for (hash, mut addrs) in extracted_hashes.clone() {
+		let mut relative_out_path = PathBuf::new();
+		let base_path_arg = Path::new(base_dir_arg);
+
+		if base_path_arg.is_absolute() && dll_path.starts_with(base_path_arg) {
+			if let Ok(stripped) = dll_path.strip_prefix(base_path_arg) {
+				relative_out_path = stripped.to_path_buf();
+			}
+		} else {
+			let mut is_base_dir = false;
+			for component in dll_path.components() {
+				if component.as_os_str() == base_dir_arg {
+					is_base_dir = true;
+				}
+				if is_base_dir {
+					relative_out_path.push(component);
+				}
+			}
+		}
+
+		if relative_out_path.as_os_str().is_empty() {
+			if let Ok(stripped) = dll_path.strip_prefix(target_dir) {
+				relative_out_path = stripped.to_path_buf();
+			} else {
+				relative_out_path = PathBuf::from(&*filename);
+			}
+		}
+
+		let mut new_filename = relative_out_path
+			.file_name()
+			.unwrap_or_default()
+			.to_os_string();
+		new_filename.push(".txt");
+		relative_out_path.set_file_name(new_filename);
+
+		let final_out_path = Path::new(output_dir_arg).join(relative_out_path);
+
+		if let Some(parent) = final_out_path.parent() {
+			if !parent.as_os_str().is_empty() {
+				fs::create_dir_all(parent).context(format!(
+					"Failed to create directories for: {}",
+					parent.display()
+				))?;
+			}
+		}
+
+		let mut file = OpenOptions::new()
+			.create(true)
+			.write(true)
+			.truncate(true)
+			.open(&final_out_path)
+			.context(format!(
+				"Failed to open output file: {}",
+				final_out_path.display()
+			))?;
+
+		let mut sorted_hashes: Vec<_> = extracted_hashes.into_iter().collect();
+		sorted_hashes.sort_unstable_by_key(|(hash, _)| *hash);
+
+		let hash_count = sorted_hashes.len();
+
+		for (hash, mut addrs) in sorted_hashes {
 			// Deduplicate addresses just in case the scanner caught the same instruction twice
 			addrs.sort_unstable();
 			addrs.dedup();
@@ -204,9 +304,11 @@ fn process_dll(dll_path: &Path, file: &mut File, debug_mode: bool) -> Result<()>
 				writeln!(file, "{}", hash)?;
 			}
 		}
+
 		println!(
-			"[+] Found and exported {} unique hashes.",
-			extracted_hashes.len()
+			"[+] Found and exported {} unique hashes to {}.",
+			hash_count,
+			final_out_path.display()
 		);
 	} else {
 		println!("[-] No hashes extracted.");

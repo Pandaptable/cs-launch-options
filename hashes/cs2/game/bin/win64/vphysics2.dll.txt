@@ -1,0 +1,12 @@
+-tools, 197456290
+-allsymmoredetailed, 227921847
+-allsymmessages, 385212326
+-ut, 552294149
+-unittest, 1677567567
+-sse4, 1849011768
+-validate, 1850967690
+-sse3, 2776830954
+-allsymdetailed, 2820614380
+-shelpers_dwarf_symbol_path, 2927921579
+-avx, 3020312170
+-sse2, 4274893216
