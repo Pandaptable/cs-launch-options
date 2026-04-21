@@ -2,6 +2,7 @@
 -1600
 -32bit
 -3udwpmorphcomposite
+-480
 -4gpu
 -64bit
 -64os
@@ -234,6 +235,7 @@
 -directsound
 -disableassetsystem
 -disableboneuniformbuffers
+-disablelocalization
 -disablemaxvertexshaderconstanthints
 -disable_affinity_preferences
 -disable_asset_autorecompile
@@ -249,11 +251,13 @@
 -disable_srgbtex
 -disable_stall_monitor
 -disable_tv_status
+-disable_workshop_command_filtering
 -disallowhwmorph
 -display_tv_status
 -dlc
 -dllinfo
 -dllverification
+-dlss
 -donotpreloaddlls
 -dontevicttextures
 -dontusegamedir
@@ -329,6 +333,7 @@
 -flushlog
 -fonipa
 -fonnapa
+-force
 -force-warn-no-adapters
 -force32bit
 -force64bit
@@ -366,6 +371,7 @@
 -framesamples
 -freq
 -frozen
+-fs
 -fshallow
 -fshallow2
 -fs_log
@@ -695,6 +701,7 @@
 -nodepthtexture
 -nodetail
 -nodev
+-nodlss
 -nodns
 -nodrawtriggers
 -nodttest
@@ -818,6 +825,7 @@
 -no_texture_stream
 -no_tools_ignorechildprocess_env
 -null
+-nv
 -oldcubepath
 -olddialogs
 -onethreadpool
@@ -834,6 +842,7 @@
 -overridelean
 -override_vpk
 -owner
+-p4
 -pakxv_lowviolence
 -panoconsole
 -panorama
@@ -1222,6 +1231,7 @@
 -use_panel_id_in_rt_name
 -use_raw_signal_handler
 -use_valve_ice
+-ut
 -validate
 -validatereadonlyassets
 -valveclient
@@ -1363,6 +1373,7 @@
 -vulkan_vma_defrag_each_frame
 -vulkan_vma_shutdown
 -vxconsole
+-w
 -wait_before_assetsystem_startup
 -walk
 -warmtime
@@ -1384,6 +1395,7 @@
 -worldwide
 -write_debug_path_trace_scene_info
 -write_weapon_anim_prefab
+-ww
 -x
 -xbox
 -xboxreslist
