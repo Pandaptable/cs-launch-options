@@ -604,7 +604,7 @@
 -sse3, 2776830954
 -vulkan_disable_khr_separate_depth_stencil_layouts, 1277924399
 -vulkan_vma_shutdown, 3215873099
--vulkan_disable_fossilize_1whitelist, 2414162262
+-vulkan_disable_fossilize_whitelist, 2414162262
 -autoconfig, 3596328012
 -nodlss, 1944714247
 -vulkan_disable_khr_swapchain_mutable_format, 3649009234
