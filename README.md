@@ -26,3 +26,12 @@
 in `find-hashes` you can find a vibecoded rust snippet to check a dll for hashed command line arguments (somehow it always finds everything there are a *couple* false matches... `7` is an example of a hash that doesn't actually map to a launch option.. have to look into it at some point:tm:)
 
 `mc.py` is for use with `launch-options.txt` and the output of `find-hashes`
+
+other commands
+```
+# check count of unnmapped launch options
+grep -hroE "^[0-9]+" ./hashes/cs2 | sort -u | wc -l
+
+# output unmapped launch options to file
+grep -hroE "^[0-9]+" ./hashes/cs2 | sort -u > unmapped.txt
+```

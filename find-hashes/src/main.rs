@@ -214,8 +214,11 @@ fn process_dll(
 									|| fwd_instr.op0_kind() == OpKind::Register;
 								if is_indirect_call {
 									if let Some((hash, ip)) = last_rdx_imm {
-										// Insert the hash as a key, and append the IP to the vector
-										extracted_hashes.entry(hash).or_default().push(ip);
+										// am convinced we have all launch options that would fall within this, so i feel justified adding this.
+										if hash > 1000 {
+											// Insert the hash as a key, and append the IP to the vector
+											extracted_hashes.entry(hash).or_default().push(ip);
+										}
 									}
 									break;
 								}
