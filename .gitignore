@@ -90,5 +90,7 @@ dkms.conf
 
 
 hashcat/
+hashes/*-debug
+depots/
 found_hashes.txt
 find-hashes/hashes.txt
