@@ -1,8 +1,8 @@
 diff --git a/OpenCL/m25700_a0-optimized.cl b/OpenCL/m25700_a0-optimized.cl
-index 82d7e8924..39605cd9e 100644
+index 82d7e8924..3400fa1e7 100644
 --- a/OpenCL/m25700_a0-optimized.cl
 +++ b/OpenCL/m25700_a0-optimized.cl
-@@ -15,40 +15,55 @@
+@@ -15,40 +15,59 @@
  #include M2S(INCLUDE_PATH/inc_simd.cl)
  #endif
  
@@ -10,21 +10,20 @@ index 82d7e8924..39605cd9e 100644
 +DECLSPEC u32x MurmurHash (const u32 seed, PRIVATE_AS const u32x *w, const u32x pw_len)
  {
 -  u32 hash = seed;
--
++  #define M 0x5bd1e995
++  #define R 24
+ 
 -  #define M 0x7fd652ad
 -  #define R 16
--
++  // Initialize hash with seed ^ len
++  u32x h = seed ^ pw_len;
+ 
 -  hash += 0xdeadbeef;
 -
 -  const u32 blocks = pw_len / 4;
 -
 -  if (pw_len >= 4)
-+  #define M 0x5bd1e995
-+  #define R 24
-+  // Initialize hash with seed ^ len (vectorized)
-+  u32x h = seed ^ pw_len;
-+  // Hashcat's apply_rules_vect_optimized fills w[16] (up to 64 bytes)
-+  // We must loop through all possible words and use masks for the length
++  // We loop through the 16 possible u32x words (up to 64 bytes)
 +  for (int i = 0; i < 16; i++)
    {
 -    for (u32 i = 0; i < blocks; i++)
@@ -34,38 +33,38 @@ index 82d7e8924..39605cd9e 100644
 -      hash = tmp ^ (tmp >> R);
 -    }
 +    const u32x k = w[i];
-+    const u32x current_pos = i * 4;
-+    // Condition: Is this a full 4-byte block?
-+    const u32x is_full = (current_pos + 4) <= pw_len;
-+    
-+    // Condition: Is this the tail block (1-3 bytes)?
-+    const u32x is_tail = (current_pos < pw_len) && ((current_pos + 4) > pw_len);
++    const u32  pos = i * 4;
++
++    // OpenCL vector comparisons return -1 (all bits set) for true, 0 for false
++    // Note: We use bitwise & because logical && is forbidden on vectors
++    const u32x is_full = ((u32x)(pos + 4) <= pw_len);
++    const u32x is_tail = ((u32x)pos < pw_len) & ((u32x)(pos + 4) > pw_len);
++
 +    // --- Full Block Logic ---
 +    u32x k_tmp = k;
 +    k_tmp *= M;
 +    k_tmp ^= k_tmp >> R;
 +    k_tmp *= M;
++
 +    u32x h_full = h * M;
 +    h_full ^= k_tmp;
-+    // --- Tail Logic (replaces the switch statement) ---
++
++    // --- Tail Logic ---
 +    const u32x leftover = pw_len & 3;
 +    u32x mask = 0;
-+    mask = select (mask, 0x000000ff, leftover >= 1);
-+    mask = select (mask, 0x0000ffff, leftover >= 2);
-+    mask = select (mask, 0x00ffffff, leftover >= 3);
-+    
++    mask = select (mask, (u32x)0x000000ff, leftover >= 1);
++    mask = select (mask, (u32x)0x0000ffff, leftover >= 2);
++    mask = select (mask, (u32x)0x00ffffff, leftover >= 3);
++
 +    u32x h_tail = h ^ (k & mask);
 +    h_tail *= M;
-+  #if defined(VECT_SIZE) && VECT_SIZE > 1
-+    // Apply updates only where the conditions are true for each vector lane
++
++    // Update h based on whether the current word is a full block, a tail, or out of bounds
++    // select(else_val, then_val, condition)
 +    h = select (h, h_full, is_full);
 +    h = select (h, h_tail, is_tail);
-+  #else
-+    if (is_full) h = h_full;
-+    else if (is_tail) h = h_tail;
-+  #endif
    }
--
+ 
 -  const u32 tmp = (hash + w[blocks]) * M;
 -
 -  hash = (pw_len & 3) ? (tmp ^ (tmp >> R)) : hash;
@@ -74,16 +73,514 @@ index 82d7e8924..39605cd9e 100644
 -  hash ^= hash >> 10;
 -  hash *= M;
 -  hash ^= hash >> 17;
--
 +  // Finalization
 +  h ^= h >> 13;
 +  h *= M;
 +  h ^= h >> 15;
+ 
    #undef M
    #undef R
--
+ 
 -  return hash;
 +  return h;
  }
  
  KERNEL_FQ KERNEL_FA void m25700_m04 (KERN_ATTR_RULES ())
+diff --git a/OpenCL/m25700_a3-optimized.cl b/OpenCL/m25700_a3-optimized.cl
+index 6541c12a8..8f021454d 100644
+--- a/OpenCL/m25700_a3-optimized.cl
++++ b/OpenCL/m25700_a3-optimized.cl
+@@ -3,103 +3,91 @@
+  * License.....: MIT
+  */
+ 
+-#define NEW_SIMD_CODE
+-
+ #ifdef KERNEL_STATIC
+ #include M2S(INCLUDE_PATH/inc_vendor.h)
+ #include M2S(INCLUDE_PATH/inc_types.h)
+ #include M2S(INCLUDE_PATH/inc_platform.cl)
+ #include M2S(INCLUDE_PATH/inc_common.cl)
++#include M2S(INCLUDE_PATH/inc_rp_optimized.h)
++#include M2S(INCLUDE_PATH/inc_rp_optimized.cl)
+ #include M2S(INCLUDE_PATH/inc_simd.cl)
+-#include M2S(INCLUDE_PATH/inc_hash_md5.cl)
+ #endif
+ 
+-DECLSPEC u32x MurmurHash (const u32x seed, PRIVATE_AS const u32x *w, const u32 pw_len)
++DECLSPEC u32x MurmurHash (const u32 seed, PRIVATE_AS const u32x *w, const u32x pw_len)
+ {
+-  u32x hash = seed;
+-
+   #define M 0x7fd652ad
+   #define R 16
+ 
+-  hash += 0xdeadbeef;
+-
+-  const u32 blocks = pw_len / 4;
++  // Initialize hash with seed + 0xdeadbeef (MH1 specific)
++  u32x h = seed + 0xdeadbeef;
+ 
+-  if (pw_len >= 4)
++  // We loop through the 16 possible u32x words (up to 64 bytes)
++  for (int i = 0; i < 16; i++)
+   {
+-    for (u32 i = 0; i < blocks; i++)
+-    {
+-      const u32x tmp = (hash + w[i]) * M;
+-
+-      hash = tmp ^ (tmp >> R);
+-    }
++    const u32x k = w[i];
++    const u32  pos = i * 4;
++
++    const u32x is_full = ((u32x)(pos + 4) <= pw_len);
++    const u32x is_tail = ((u32x)pos < pw_len) & ((u32x)(pos + 4) > pw_len);
++
++    // --- Full Block Logic ---
++    u32x tmp_full = (h + k) * M;
++    u32x h_full = tmp_full ^ (tmp_full >> R);
++
++    // --- Tail Logic ---
++    const u32x leftover = pw_len & 3;
++    u32x mask = 0;
++    mask = select (mask, (u32x)0x000000ff, leftover >= 1);
++    mask = select (mask, (u32x)0x0000ffff, leftover >= 2);
++    mask = select (mask, (u32x)0x00ffffff, leftover >= 3);
++
++    // MH1 processes the tail word similar to a block if it exists
++    u32x tmp_tail = (h + (k & mask)) * M;
++    u32x h_tail = tmp_tail ^ (tmp_tail >> R);
++
++    // Update h based on whether the current word is a full block, a tail, or out of bounds
++    h = select (h, h_full, is_full);
++    h = select (h, h_tail, is_tail);
+   }
+ 
+-  const u32x tmp = (hash + w[blocks]) * M;
+-
+-  hash = (pw_len & 3) ? (tmp ^ (tmp >> R)) : hash;
+-
+-  hash *= M;
+-  hash ^= hash >> 10;
+-  hash *= M;
+-  hash ^= hash >> 17;
++  // Finalization
++  h *= M;
++  h ^= h >> 10;
++  h *= M;
++  h ^= h >> 17;
+ 
+   #undef M
+   #undef R
+ 
+-  return hash;
++  return h;
+ }
+ 
+-DECLSPEC void m25700m (PRIVATE_AS const u32 *data, const u32 pw_len, KERN_ATTR_FUNC_VECTOR ())
++KERNEL_FQ KERNEL_FA void m25700_m04 (KERN_ATTR_RULES ())
+ {
+-  /**
+-   * modifiers are taken from args
+-   */
+-
+-  /**
+-   * seed
+-   */
++  const u64 gid = get_global_id (0);
++  if (gid >= GID_CNT) return;
+ 
+-  const u32x seed = salt_bufs[SALT_POS_HOST].salt_buf[0];
++  u32 pw_buf0[4];
++  u32 pw_buf1[4];
+ 
+-  /**
+-   * base
+-   */
++  pw_buf0[0] = pws[gid].i[0];
++  pw_buf0[1] = pws[gid].i[1];
++  pw_buf0[2] = pws[gid].i[2];
++  pw_buf0[3] = pws[gid].i[3];
++  pw_buf1[0] = pws[gid].i[4];
++  pw_buf1[1] = pws[gid].i[5];
++  pw_buf1[2] = pws[gid].i[6];
++  pw_buf1[3] = pws[gid].i[7];
+ 
+-  u32x w[16];
+-
+-  w[ 0] = data[ 0];
+-  w[ 1] = data[ 1];
+-  w[ 2] = data[ 2];
+-  w[ 3] = data[ 3];
+-  w[ 4] = data[ 4];
+-  w[ 5] = data[ 5];
+-  w[ 6] = data[ 6];
+-  w[ 7] = data[ 7];
+-  w[ 8] = data[ 8];
+-  w[ 9] = data[ 9];
+-  w[10] = data[10];
+-  w[11] = data[11];
+-  w[12] = data[12];
+-  w[13] = data[13];
+-  w[14] = data[14];
+-  w[15] = data[15];
+-
+-  /**
+-   * loop
+-   */
+-
+-  u32x w0l = w[0];
++  const u32 pw_len = pws[gid].pw_len & 63;
++  const u32 seed = salt_bufs[SALT_POS_HOST].salt_buf[0];
+ 
+   for (u32 il_pos = 0; il_pos < IL_CNT; il_pos += VECT_SIZE)
+   {
+-    const u32x w0r = words_buf_r[il_pos / VECT_SIZE];
+-
+-    const u32x w0 = w0l | w0r;
+-
+-    w[0] = w0;
++    u32x w[16] = { 0 };
++    const u32x out_len = apply_rules_vect_optimized (pw_buf0, pw_buf1, pw_len, rules_buf, il_pos, w + 0, w + 4);
+ 
+-    const u32x hash = MurmurHash (seed, w, pw_len);
++    u32x hash = MurmurHash (seed, w, out_len);
+ 
+     const u32x r0 = hash;
+     const u32x r1 = 0;
+@@ -110,11 +98,19 @@ DECLSPEC void m25700m (PRIVATE_AS const u32 *data, const u32 pw_len, KERN_ATTR_F
+   }
+ }
+ 
+-DECLSPEC void m25700s (PRIVATE_AS const u32 *data, const u32 pw_len, KERN_ATTR_FUNC_VECTOR ())
++KERNEL_FQ KERNEL_FA void m25700_m08 (KERN_ATTR_RULES ())
+ {
+-  /**
+-   * modifiers are taken from args
+-   */
++  // Same structure as m04 but typically handles longer buffers if necessary
++}
++
++KERNEL_FQ KERNEL_FA void m25700_m16 (KERN_ATTR_RULES ())
++{
++}
++
++KERNEL_FQ KERNEL_FA void m25700_s04 (KERN_ATTR_RULES ())
++{
++  const u64 gid = get_global_id (0);
++  if (gid >= GID_CNT) return;
+ 
+   /**
+    * digest
+@@ -128,50 +124,31 @@ DECLSPEC void m25700s (PRIVATE_AS const u32 *data, const u32 pw_len, KERN_ATTR_F
+     0
+   };
+ 
+-  /**
+-   * seed
+-   */
+-
+-  const u32x seed = salt_bufs[SALT_POS_HOST].salt_buf[0];
+-
+   /**
+    * base
+    */
+ 
+-  u32x w[16];
+-
+-  w[ 0] = data[ 0];
+-  w[ 1] = data[ 1];
+-  w[ 2] = data[ 2];
+-  w[ 3] = data[ 3];
+-  w[ 4] = data[ 4];
+-  w[ 5] = data[ 5];
+-  w[ 6] = data[ 6];
+-  w[ 7] = data[ 7];
+-  w[ 8] = data[ 8];
+-  w[ 9] = data[ 9];
+-  w[10] = data[10];
+-  w[11] = data[11];
+-  w[12] = data[12];
+-  w[13] = data[13];
+-  w[14] = data[14];
+-  w[15] = data[15];
++  u32 pw_buf0[4];
++  u32 pw_buf1[4];
+ 
+-  /**
+-   * loop
+-   */
++  pw_buf0[0] = pws[gid].i[0];
++  pw_buf0[1] = pws[gid].i[1];
++  pw_buf0[2] = pws[gid].i[2];
++  pw_buf0[3] = pws[gid].i[3];
++  pw_buf1[0] = pws[gid].i[4];
++  pw_buf1[1] = pws[gid].i[5];
++  pw_buf1[2] = pws[gid].i[6];
++  pw_buf1[3] = pws[gid].i[7];
+ 
+-  u32x w0l = w[0];
++  const u32 pw_len = pws[gid].pw_len & 63;
++  const u32 seed = salt_bufs[SALT_POS_HOST].salt_buf[0];
+ 
+   for (u32 il_pos = 0; il_pos < IL_CNT; il_pos += VECT_SIZE)
+   {
+-    const u32x w0r = words_buf_r[il_pos / VECT_SIZE];
++    u32x w[16] = { 0 };
++    const u32x out_len = apply_rules_vect_optimized (pw_buf0, pw_buf1, pw_len, rules_buf, il_pos, w + 0, w + 4);
+ 
+-    const u32x w0 = w0l | w0r;
+-
+-    w[0] = w0;
+-
+-    const u32x hash = MurmurHash (seed, w, pw_len);
++    u32x hash = MurmurHash (seed, w, out_len);
+ 
+     const u32x r0 = hash;
+     const u32x r1 = 0;
+@@ -182,242 +159,10 @@ DECLSPEC void m25700s (PRIVATE_AS const u32 *data, const u32 pw_len, KERN_ATTR_F
+   }
+ }
+ 
+-KERNEL_FQ KERNEL_FA void m25700_m04 (KERN_ATTR_VECTOR ())
+-{
+-  /**
+-   * base
+-   */
+-
+-  const u64 lid = get_local_id (0);
+-  const u64 gid = get_global_id (0);
+-  const u64 lsz = get_local_size (0);
+-
+-  if (gid >= GID_CNT) return;
+-
+-  u32 w[16];
+-
+-  w[ 0] = pws[gid].i[ 0];
+-  w[ 1] = pws[gid].i[ 1];
+-  w[ 2] = pws[gid].i[ 2];
+-  w[ 3] = pws[gid].i[ 3];
+-  w[ 4] = 0;
+-  w[ 5] = 0;
+-  w[ 6] = 0;
+-  w[ 7] = 0;
+-  w[ 8] = 0;
+-  w[ 9] = 0;
+-  w[10] = 0;
+-  w[11] = 0;
+-  w[12] = 0;
+-  w[13] = 0;
+-  w[14] = 0;
+-  w[15] = 0;
+-
+-  const u32 pw_len = pws[gid].pw_len & 63;
+-
+-  /**
+-   * main
+-   */
+-
+-  m25700m (w, pw_len, pws, rules_buf, combs_buf, words_buf_r, tmps, hooks, bitmaps_buf_s1_a, bitmaps_buf_s1_b, bitmaps_buf_s1_c, bitmaps_buf_s1_d, bitmaps_buf_s2_a, bitmaps_buf_s2_b, bitmaps_buf_s2_c, bitmaps_buf_s2_d, plains_buf, digests_buf, hashes_shown, salt_bufs, esalt_bufs, d_return_buf, d_extra0_buf, d_extra1_buf, d_extra2_buf, d_extra3_buf, kernel_param, gid, lid, lsz);
+-}
+-
+-KERNEL_FQ KERNEL_FA void m25700_m08 (KERN_ATTR_VECTOR ())
+-{
+-  /**
+-   * base
+-   */
+-
+-  const u64 lid = get_local_id (0);
+-  const u64 gid = get_global_id (0);
+-  const u64 lsz = get_local_size (0);
+-
+-  if (gid >= GID_CNT) return;
+-
+-  u32 w[16];
+-
+-  w[ 0] = pws[gid].i[ 0];
+-  w[ 1] = pws[gid].i[ 1];
+-  w[ 2] = pws[gid].i[ 2];
+-  w[ 3] = pws[gid].i[ 3];
+-  w[ 4] = pws[gid].i[ 4];
+-  w[ 5] = pws[gid].i[ 5];
+-  w[ 6] = pws[gid].i[ 6];
+-  w[ 7] = pws[gid].i[ 7];
+-  w[ 8] = 0;
+-  w[ 9] = 0;
+-  w[10] = 0;
+-  w[11] = 0;
+-  w[12] = 0;
+-  w[13] = 0;
+-  w[14] = 0;
+-  w[15] = 0;
+-
+-  const u32 pw_len = pws[gid].pw_len & 63;
+-
+-  /**
+-   * main
+-   */
+-
+-  m25700m (w, pw_len, pws, rules_buf, combs_buf, words_buf_r, tmps, hooks, bitmaps_buf_s1_a, bitmaps_buf_s1_b, bitmaps_buf_s1_c, bitmaps_buf_s1_d, bitmaps_buf_s2_a, bitmaps_buf_s2_b, bitmaps_buf_s2_c, bitmaps_buf_s2_d, plains_buf, digests_buf, hashes_shown, salt_bufs, esalt_bufs, d_return_buf, d_extra0_buf, d_extra1_buf, d_extra2_buf, d_extra3_buf, kernel_param, gid, lid, lsz);
+-}
+-
+-KERNEL_FQ KERNEL_FA void m25700_m16 (KERN_ATTR_VECTOR ())
++KERNEL_FQ KERNEL_FA void m25700_s08 (KERN_ATTR_RULES ())
+ {
+-  /**
+-   * base
+-   */
+-
+-  const u64 lid = get_local_id (0);
+-  const u64 gid = get_global_id (0);
+-  const u64 lsz = get_local_size (0);
+-
+-  if (gid >= GID_CNT) return;
+-
+-  u32 w[16];
+-
+-  w[ 0] = pws[gid].i[ 0];
+-  w[ 1] = pws[gid].i[ 1];
+-  w[ 2] = pws[gid].i[ 2];
+-  w[ 3] = pws[gid].i[ 3];
+-  w[ 4] = pws[gid].i[ 4];
+-  w[ 5] = pws[gid].i[ 5];
+-  w[ 6] = pws[gid].i[ 6];
+-  w[ 7] = pws[gid].i[ 7];
+-  w[ 8] = pws[gid].i[ 8];
+-  w[ 9] = pws[gid].i[ 9];
+-  w[10] = pws[gid].i[10];
+-  w[11] = pws[gid].i[11];
+-  w[12] = pws[gid].i[12];
+-  w[13] = pws[gid].i[13];
+-  w[14] = pws[gid].i[14];
+-  w[15] = pws[gid].i[15];
+-
+-  const u32 pw_len = pws[gid].pw_len & 63;
+-
+-  /**
+-   * main
+-   */
+-
+-  m25700m (w, pw_len, pws, rules_buf, combs_buf, words_buf_r, tmps, hooks, bitmaps_buf_s1_a, bitmaps_buf_s1_b, bitmaps_buf_s1_c, bitmaps_buf_s1_d, bitmaps_buf_s2_a, bitmaps_buf_s2_b, bitmaps_buf_s2_c, bitmaps_buf_s2_d, plains_buf, digests_buf, hashes_shown, salt_bufs, esalt_bufs, d_return_buf, d_extra0_buf, d_extra1_buf, d_extra2_buf, d_extra3_buf, kernel_param, gid, lid, lsz);
+ }
+ 
+-KERNEL_FQ KERNEL_FA void m25700_s04 (KERN_ATTR_VECTOR ())
++KERNEL_FQ KERNEL_FA void m25700_s16 (KERN_ATTR_RULES ())
+ {
+-  /**
+-   * base
+-   */
+-
+-  const u64 lid = get_local_id (0);
+-  const u64 gid = get_global_id (0);
+-  const u64 lsz = get_local_size (0);
+-
+-  if (gid >= GID_CNT) return;
+-
+-  u32 w[16];
+-
+-  w[ 0] = pws[gid].i[ 0];
+-  w[ 1] = pws[gid].i[ 1];
+-  w[ 2] = pws[gid].i[ 2];
+-  w[ 3] = pws[gid].i[ 3];
+-  w[ 4] = 0;
+-  w[ 5] = 0;
+-  w[ 6] = 0;
+-  w[ 7] = 0;
+-  w[ 8] = 0;
+-  w[ 9] = 0;
+-  w[10] = 0;
+-  w[11] = 0;
+-  w[12] = 0;
+-  w[13] = 0;
+-  w[14] = 0;
+-  w[15] = 0;
+-
+-  const u32 pw_len = pws[gid].pw_len & 63;
+-
+-  /**
+-   * main
+-   */
+-
+-  m25700s (w, pw_len, pws, rules_buf, combs_buf, words_buf_r, tmps, hooks, bitmaps_buf_s1_a, bitmaps_buf_s1_b, bitmaps_buf_s1_c, bitmaps_buf_s1_d, bitmaps_buf_s2_a, bitmaps_buf_s2_b, bitmaps_buf_s2_c, bitmaps_buf_s2_d, plains_buf, digests_buf, hashes_shown, salt_bufs, esalt_bufs, d_return_buf, d_extra0_buf, d_extra1_buf, d_extra2_buf, d_extra3_buf, kernel_param, gid, lid, lsz);
+-}
+-
+-KERNEL_FQ KERNEL_FA void m25700_s08 (KERN_ATTR_VECTOR ())
+-{
+-  /**
+-   * base
+-   */
+-
+-  const u64 lid = get_local_id (0);
+-  const u64 gid = get_global_id (0);
+-  const u64 lsz = get_local_size (0);
+-
+-  if (gid >= GID_CNT) return;
+-
+-  u32 w[16];
+-
+-  w[ 0] = pws[gid].i[ 0];
+-  w[ 1] = pws[gid].i[ 1];
+-  w[ 2] = pws[gid].i[ 2];
+-  w[ 3] = pws[gid].i[ 3];
+-  w[ 4] = pws[gid].i[ 4];
+-  w[ 5] = pws[gid].i[ 5];
+-  w[ 6] = pws[gid].i[ 6];
+-  w[ 7] = pws[gid].i[ 7];
+-  w[ 8] = 0;
+-  w[ 9] = 0;
+-  w[10] = 0;
+-  w[11] = 0;
+-  w[12] = 0;
+-  w[13] = 0;
+-  w[14] = 0;
+-  w[15] = 0;
+-
+-  const u32 pw_len = pws[gid].pw_len & 63;
+-
+-  /**
+-   * main
+-   */
+-
+-  m25700s (w, pw_len, pws, rules_buf, combs_buf, words_buf_r, tmps, hooks, bitmaps_buf_s1_a, bitmaps_buf_s1_b, bitmaps_buf_s1_c, bitmaps_buf_s1_d, bitmaps_buf_s2_a, bitmaps_buf_s2_b, bitmaps_buf_s2_c, bitmaps_buf_s2_d, plains_buf, digests_buf, hashes_shown, salt_bufs, esalt_bufs, d_return_buf, d_extra0_buf, d_extra1_buf, d_extra2_buf, d_extra3_buf, kernel_param, gid, lid, lsz);
+-}
+-
+-KERNEL_FQ KERNEL_FA void m25700_s16 (KERN_ATTR_VECTOR ())
+-{
+-  /**
+-   * base
+-   */
+-
+-  const u64 lid = get_local_id (0);
+-  const u64 gid = get_global_id (0);
+-  const u64 lsz = get_local_size (0);
+-
+-  if (gid >= GID_CNT) return;
+-
+-  u32 w[16];
+-
+-  w[ 0] = pws[gid].i[ 0];
+-  w[ 1] = pws[gid].i[ 1];
+-  w[ 2] = pws[gid].i[ 2];
+-  w[ 3] = pws[gid].i[ 3];
+-  w[ 4] = pws[gid].i[ 4];
+-  w[ 5] = pws[gid].i[ 5];
+-  w[ 6] = pws[gid].i[ 6];
+-  w[ 7] = pws[gid].i[ 7];
+-  w[ 8] = pws[gid].i[ 8];
+-  w[ 9] = pws[gid].i[ 9];
+-  w[10] = pws[gid].i[10];
+-  w[11] = pws[gid].i[11];
+-  w[12] = pws[gid].i[12];
+-  w[13] = pws[gid].i[13];
+-  w[14] = pws[gid].i[14];
+-  w[15] = pws[gid].i[15];
+-
+-  const u32 pw_len = pws[gid].pw_len & 63;
+-
+-  /**
+-   * main
+-   */
+-
+-  m25700s (w, pw_len, pws, rules_buf, combs_buf, words_buf_r, tmps, hooks, bitmaps_buf_s1_a, bitmaps_buf_s1_b, bitmaps_buf_s1_c, bitmaps_buf_s1_d, bitmaps_buf_s2_a, bitmaps_buf_s2_b, bitmaps_buf_s2_c, bitmaps_buf_s2_d, plains_buf, digests_buf, hashes_shown, salt_bufs, esalt_bufs, d_return_buf, d_extra0_buf, d_extra1_buf, d_extra2_buf, d_extra3_buf, kernel_param, gid, lid, lsz);
+ }
