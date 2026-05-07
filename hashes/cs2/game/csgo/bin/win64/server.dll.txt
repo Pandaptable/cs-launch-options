@@ -20,7 +20,7 @@
 -gamestatslogging, 2295112737
 -sse3, 2776830954
 -tournament, 2922599937
-2947891903
+--debug_game_event_list, 2947891903
 -maxplayers, 3016700309
 -avx, 3020312170
 -nobots, 3308470460

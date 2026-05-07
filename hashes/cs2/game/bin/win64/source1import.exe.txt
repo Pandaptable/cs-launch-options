@@ -2,7 +2,7 @@
 -attachtodebugger, 39359517
 -steam, 53536153
 -noborder, 85611144
-93284877
+-720, 93284877
 -experimental_smartprops, 162242015
 -tools, 197456290
 -highdpi, 208895721

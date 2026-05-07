@@ -8,7 +8,7 @@
 -steam, 53536153
 -steamhdl_steamguard, 81837292
 -noborder, 85611144
-93284877
+-720, 93284877
 -benchframes, 140396338
 -novalveds, 178815654
 -tools, 197456290

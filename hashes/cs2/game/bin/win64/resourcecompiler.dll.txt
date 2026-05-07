@@ -2,7 +2,7 @@
 -attachtodebugger, 39359517
 -steam, 53536153
 -noborder, 85611144
-93284877
+-720, 93284877
 -experimental_smartprops, 162242015
 166991432
 -tools, 197456290
@@ -18,7 +18,7 @@
 -rendertask, 474059147
 -gameinput, 487301348
 -sdl_video_driver, 500051639
-502640937
+--pulse_verbose, 502640937
 -dev, 574071661
 -game, 602672632
 -sw, 628725258
