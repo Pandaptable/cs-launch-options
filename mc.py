@@ -96,7 +96,6 @@ def main():
 	if not args:
 		print("Usage: python mc.py [-d <target_dir>] -f <file> OR python mc.py [-d <target_dir>] <string1> <string2>")
 		sys.exit(1)
-
 	target_dir_arg = "./hashes"
 	if "-d" in args:
 		idx = args.index("-d")
@@ -106,33 +105,41 @@ def main():
 		else:
 			print("[-] Error: Missing directory path after -d.")
 			sys.exit(1)
-
-	if not args:
-		print("[-] Error: No cmmc arguments provided.")
-		sys.exit(1)
-
 	cmmc_args = []
-
-	if args[0] == "-f":
+	if args and args[0] == "-f":
 		if len(args) < 2:
 			print("[-] Error: Missing file argument after -f.")
 			sys.exit(1)
-
 		input_file = args[1]
 		if not os.path.isfile(input_file):
 			print(f"[-] Error: File '{input_file}' not found.")
 			sys.exit(1)
-
 		print(f"[*] Reading arguments from file: {input_file}")
 		with open(input_file, "r", encoding="utf-8") as f:
 			cmmc_args = f.read().split()
 	else:
 		cmmc_args = args
+	if not cmmc_args:
+		print("[-] Error: No cmmc arguments provided.")
+		sys.exit(1)
+	MAX_CHARS = 30000
+	all_outputs = []
+	current_batch = []
+	current_length = 0
+	print(f"[*] Processing {len(cmmc_args)} arguments in batches...")
+	for arg in cmmc_args:
+		# +1 for the space between args
+		if current_length + len(arg) + 1 > MAX_CHARS:
+			all_outputs.append(run_cmmc(current_batch))
+			current_batch = []
+			current_length = 0
 
-	print("[*] Processing input...")
-	output_text = run_cmmc(cmmc_args)
-
-	process_output(output_text, target_dir_arg)
+		current_batch.append(arg)
+		current_length += len(arg) + 1
+	if current_batch:
+		all_outputs.append(run_cmmc(current_batch))
+	combined_output = "\n".join(all_outputs)
+	process_output(combined_output, target_dir_arg)
 
 
 if __name__ == "__main__":
