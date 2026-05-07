@@ -1,13 +1,7 @@
 # cs2 launch option reversal
 
 
-`launch-options.txt` is a compiled version of every launch option i could find, from source 1, and previous depots from deadlock and CS2.
-
-`launch-options-plus.txt` are + launch options that *seem* viable to exist (+ some actually existing ones)
-
-`launch-options-deadlock.txt` is basically just launch options parsed from https://github.com/SteamTracking/GameTracking-Deadlock
-
-`launch-options-cs2.txt` is same as above, + known ones
+`launch-options.txt` is a compiled version of every launch option i could find, from source 1, and previous depots from deadlock and CS2 (add any new launch options found to this as well).
 
 `murmur-check` folder is just an implementation of the hashing that valve uses to easily check the hash of a launch option
 
