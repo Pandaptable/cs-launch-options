@@ -15,6 +15,8 @@
 
 `word-list.txt` is for use with hashcat brute forcing, no proper script for hashcat usage but we did find a few with it
 
+`unmapped.txt` currently unknown hashes that need to be found.
+
 `hashcat.patch` is a patch for hashcat to implement mmh2 32bit into it (it just replaces mmh1, so `hashcat -m 25700 -a 0` is the usage)
 
 in `find-hashes` you can find a vibecoded rust snippet to check a dll for hashed command line arguments (somehow it always finds everything there are a *couple* false matches... `7` is an example of a hash that doesn't actually map to a launch option.. have to look into it at some point:tm:)
