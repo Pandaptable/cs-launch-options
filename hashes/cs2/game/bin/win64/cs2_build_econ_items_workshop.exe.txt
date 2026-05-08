@@ -28,6 +28,7 @@
 -novpk, 2345050509
 -insecure, 2406745183
 -unbufferedio, 2502882823
+-consolelog_rotate, 2523595025
 -consolelog, 2571514003
 -addon_path, 2574785511
 -sse3, 2776830954

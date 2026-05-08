@@ -14,6 +14,8 @@ fn main() -> Result<()> {
 	let mut output_dir_arg = String::from("./hashes");
 	let mut debug_mode = false;
 
+	let mut exclude_patterns: Vec<String> = vec!["import_scripts".to_string(), "csdm".to_string()];
+
 	let mut args = env::args().skip(1);
 	while let Some(arg) = args.next() {
 		match arg.as_str() {
@@ -34,6 +36,14 @@ fn main() -> Result<()> {
 					return Ok(());
 				}
 			}
+			"--exclude" | "-e" => {
+				if let Some(pattern) = args.next() {
+					exclude_patterns.push(pattern);
+				} else {
+					println!("[-] Error: --exclude requires a pattern argument.");
+					return Ok(());
+				}
+			}
 			_ => {
 				if target_dir.is_empty() {
 					target_dir = arg;
@@ -44,9 +54,12 @@ fn main() -> Result<()> {
 
 	if target_dir.is_empty() || base_dir_arg.is_empty() {
 		println!(
-			"Usage: <executable> <target_dir> --base <base_folder> [--out <output_dir>] [-debug]"
+			"Usage: <executable> <target_dir> --base <base_folder> [--out <output_dir>] [--exclude <pattern>]... [-debug]"
 		);
-		println!("Example: executable \"C:\\..\\game\\bin\\win64\" --base game --out ./my_results");
+		println!(
+			"Example: executable \"C:\\..\\game\\bin\\win64\" --base game --out ./my_results --exclude custom_folder"
+		);
+		println!("Note: Hardcoded exclusions: {:?}", exclude_patterns);
 		return Ok(());
 	}
 
@@ -55,9 +68,26 @@ fn main() -> Result<()> {
 	println!("[*] Recursively scanning directory: {}", target_dir);
 	println!("[*] Base directory set to: {}", base_dir_arg);
 	println!("[*] Output directory set to: {}", output_dir_arg);
+	println!("[*] Excluding paths containing: {:?}", exclude_patterns);
 	if debug_mode {
 		println!("[*] Debug mode enabled. Addresses will be logged.");
 	}
+
+	let out_path = Path::new(&output_dir_arg);
+	if out_path.exists() {
+		println!("[*] Clearing existing .txt files in output directory...");
+		for entry in WalkDir::new(out_path).into_iter().filter_map(|e| e.ok()) {
+			let path = entry.path();
+			if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some("txt") {
+				fs::remove_file(path).with_context(|| {
+					format!("Failed to delete old output file: {}", path.display())
+				})?;
+			}
+		}
+	} else {
+		fs::create_dir_all(out_path).context("Failed to create output directory")?;
+	}
+	// ---------------------------------------------------------------------
 
 	for entry in WalkDir::new(target_dir_path)
 		.into_iter()
@@ -70,6 +100,16 @@ fn main() -> Result<()> {
 				path.extension().and_then(|s| s.to_str()),
 				Some("dll" | "exe")
 			) {
+			let path_str = path.to_string_lossy();
+			let should_exclude = exclude_patterns
+				.iter()
+				.any(|pattern| path_str.contains(pattern));
+
+			if should_exclude {
+				println!("[*] Skipping {} (matches exclude pattern)", path.display());
+				continue;
+			}
+
 			println!("\n[*] Analyzing {}...", path.display());
 
 			if let Err(e) = process_dll(
@@ -138,7 +178,6 @@ fn process_dll(
 
 	let bitness = if pe.is_64 { 64 } else { 32 };
 
-	// Use a HashMap to group IPs by their extracted hash
 	let mut extracted_hashes: HashMap<u64, Vec<u64>> = HashMap::new();
 
 	for section in pe.sections {
@@ -189,38 +228,120 @@ fn process_dll(
 							DecoderOptions::NONE,
 						);
 						let mut fwd_instr = Instruction::default();
-
-						let mut last_rdx_imm: Option<(u64, u64)> = None;
+						let mut reg_state: HashMap<Register, (u64, u64)> = HashMap::new();
 						let mut instructions_scanned = 0;
-
-						while fwd_decoder.can_decode() && instructions_scanned < 30 {
+						while fwd_decoder.can_decode() && instructions_scanned < 60 {
 							fwd_decoder.decode_out(&mut fwd_instr);
 							instructions_scanned += 1;
 
 							if fwd_instr.mnemonic() == Mnemonic::Mov {
 								let op0 = fwd_instr.op0_register();
-								if op0 == Register::EDX || op0 == Register::RDX {
+
+								if op0 != Register::None {
+									let base_op0 = get_base_register(op0);
 									if fwd_instr.op1_kind() == OpKind::Immediate32
 										|| fwd_instr.op1_kind() == OpKind::Immediate64
 									{
-										last_rdx_imm =
-											Some((fwd_instr.immediate64(), fwd_instr.ip()));
+										// We found a direct immediate move
+										reg_state.insert(
+											base_op0,
+											(fwd_instr.immediate64(), fwd_instr.ip()),
+										);
+									} else if fwd_instr.op1_kind() == OpKind::Register {
+										// We found a register-to-register move (e.g. MOV RDX, RAX)
+										let base_op1 = get_base_register(fwd_instr.op1_register());
+										if let Some(&val_ip) = reg_state.get(&base_op1) {
+											reg_state.insert(base_op0, val_ip);
+										} else {
+											reg_state.remove(&base_op0);
+										}
+									} else {
+										reg_state.remove(&base_op0);
 									}
 								}
 							}
-
 							if fwd_instr.mnemonic() == Mnemonic::Call {
 								let is_indirect_call = fwd_instr.op0_kind() == OpKind::Memory
 									|| fwd_instr.op0_kind() == OpKind::Register;
 								if is_indirect_call {
-									if let Some((hash, ip)) = last_rdx_imm {
-										// am convinced we have all launch options that would fall within this, so i feel justified adding this.
-										if hash > 1000 {
-											// Insert the hash as a key, and append the IP to the vector
-											extracted_hashes.entry(hash).or_default().push(ip);
+									let arg_regs =
+										[Register::RCX, Register::RDX, Register::R8, Register::R9];
+									let ignored_hashes = [
+										1024u64,
+										1056u64,
+										1136u64,
+										1248u64,
+										1500u64,
+										2048u64,
+										2992u64,
+										4096u64,
+										5000u64,
+										8192u64,
+										8400u64,
+										27015u64,
+										27020u64,
+										27021u64,
+										32767u64,
+										32768u64,
+										65536u64,
+										81920u64,
+										95000u64,
+										100000u64,
+										131097u64,
+										331522u64,
+										624820u64,
+										624821u64,
+										624822u64,
+										1048576u64,
+										2097152u64,
+										2279720u64,
+										3120232u64,
+										8393104u64,
+										231313132u64,
+										269354392u64,
+										1313166403u64,
+										1313166419u64,
+										1380142404u64,
+										1380143954u64,
+										2147483647u64,
+										2147483648u64,
+										3221225672u64,
+										4278190335u64,
+										4278255360u64,
+										4278255615u64,
+										4294901760u64,
+										4294934656u64,
+										4294966297u64,
+										4294967040u64,
+										4294967294u64,
+										4294967295u64,
+										418564367478u64,
+										474080965238u64,
+										500152235126u64,
+										111546415280246u64,
+										281474976907284u64,
+										13778779262078472358u64,
+									];
+
+									for reg in &arg_regs {
+										if let Some(&(hash, ip)) = reg_state.get(reg) {
+											if hash > 1000 && !ignored_hashes.contains(&hash) {
+												extracted_hashes.entry(hash).or_default().push(ip);
+											}
 										}
 									}
-									break;
+								}
+								let volatile_regs = [
+									Register::RAX,
+									Register::RCX,
+									Register::RDX,
+									Register::R8,
+									Register::R9,
+									Register::R10,
+									Register::R11,
+								];
+								for reg in &volatile_regs {
+									reg_state.remove(reg);
 								}
 							}
 						}
@@ -294,12 +415,10 @@ fn process_dll(
 		let hash_count = sorted_hashes.len();
 
 		for (hash, mut addrs) in sorted_hashes {
-			// Deduplicate addresses just in case the scanner caught the same instruction twice
 			addrs.sort_unstable();
 			addrs.dedup();
 
 			if debug_mode {
-				// Map the addresses into hex strings and join them for the comment
 				let addr_strings: Vec<String> =
 					addrs.iter().map(|a| format!("0x{:X}", a)).collect();
 				writeln!(file, "{}, // Found at: {}", hash, addr_strings.join(", "))?;
@@ -318,4 +437,26 @@ fn process_dll(
 	}
 
 	Ok(())
+}
+
+fn get_base_register(reg: Register) -> Register {
+	match reg {
+		Register::AL | Register::AH | Register::AX | Register::EAX | Register::RAX => Register::RAX,
+		Register::CL | Register::CH | Register::CX | Register::ECX | Register::RCX => Register::RCX,
+		Register::DL | Register::DH | Register::DX | Register::EDX | Register::RDX => Register::RDX,
+		Register::BL | Register::BH | Register::BX | Register::EBX | Register::RBX => Register::RBX,
+		Register::SPL | Register::SP | Register::ESP | Register::RSP => Register::RSP,
+		Register::BPL | Register::BP | Register::EBP | Register::RBP => Register::RBP,
+		Register::SIL | Register::SI | Register::ESI | Register::RSI => Register::RSI,
+		Register::DIL | Register::DI | Register::EDI | Register::RDI => Register::RDI,
+		Register::R8L | Register::R8W | Register::R8D | Register::R8 => Register::R8,
+		Register::R9L | Register::R9W | Register::R9D | Register::R9 => Register::R9,
+		Register::R10L | Register::R10W | Register::R10D | Register::R10 => Register::R10,
+		Register::R11L | Register::R11W | Register::R11D | Register::R11 => Register::R11,
+		Register::R12L | Register::R12W | Register::R12D | Register::R12 => Register::R12,
+		Register::R13L | Register::R13W | Register::R13D | Register::R13 => Register::R13,
+		Register::R14L | Register::R14W | Register::R14D | Register::R14 => Register::R14,
+		Register::R15L | Register::R15W | Register::R15D | Register::R15 => Register::R15,
+		_ => reg,
+	}
 }
