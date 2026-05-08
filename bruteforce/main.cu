@@ -47,7 +47,7 @@ int check_keypress()
 #endif
 
 #define STRINGTOKEN_MURMURHASH_SEED 0x31415926
-#define MAX_TARGETS 64
+#define MAX_TARGETS 128
 #define MAX_STRING_LEN 256
 
 __constant__ char PREFIXES[2] = {'-', '+'};
