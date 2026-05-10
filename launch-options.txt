@@ -51,6 +51,7 @@
 -additionalpdbsearchpath
 -addon
 -addon_path
+-address
 -aftermath
 -aggs
 -ags_async_shaders
@@ -104,6 +105,7 @@
 -assert_dialog_hotkeys
 -asset
 -assetbrowser
+-assetinit
 -assetmergegameother
 -assettargetgameroot
 -asyncconsole
@@ -127,6 +129,7 @@
 -b
 -back
 -background
+-baremode
 -basedir
 -batcherrors
 -batchwarnings
@@ -141,6 +144,7 @@
 -binary
 -bindlesstexturedescriptorsettest
 -bindpos
+-binstrings
 -block
 -blocks
 -blocksize
@@ -185,6 +189,7 @@
 -class
 -classes
 -clean
+-cleanup
 -clearassertstate
 -clientonly
 -clientport
@@ -239,6 +244,7 @@
 -customswf
 -dac_offline
 -danger_mode_ignore_schema_mismatches
+-dark
 -dbf
 -dbl_max
 -dbl_min
@@ -259,6 +265,7 @@
 -demo
 -demo_force_version
 -demo_upconvert
+-dep
 -dependency_check_only
 -deprecated_dx9
 -detailedinfo
@@ -268,6 +275,7 @@
 -device
 -dev_disable_threaded_rendering
 -diff
+-diff_format
 -directsound
 -disableassetsystem
 -disableboneuniformbuffers
@@ -306,6 +314,7 @@
 -dumpmeshes
 -dumpstaticprop
 -dumpvidmemstats
+-dump_mesh
 -dvd
 -dvddev
 -dx11
@@ -336,6 +345,7 @@
 -endgamevid
 -entkv_use_schema
 -entrypoint
+-errlog
 -error
 -error_if_idle
 -etwprofile
@@ -346,7 +356,9 @@
 -experimental_smartprops
 -extended
 -externalnetworkcryptkey
+-extract
 -extract_sentence
+-f
 -fake_mixed_cpu_mode
 -fake_stale_server
 -fake_workshop_dir
@@ -442,8 +454,10 @@
 -gamestatstag
 -gameuidll
 -game_particle_manager_event_destroy_involving
+-game_res_kv3
 -gamma20
 -gdb
+-gdep
 -generic
 -geometry
 -gl
@@ -516,11 +530,13 @@
 -ignore_certificate_address
 -ignore_certificate_valveds
 -immediate_language_change
+-import_sounds_basemod
 -indexlights
 -indir
 -inf
 -infinity
 -input
+-inputlist
 -inputss_update_spew
 -input_button_code_is_scan_code
 -input_message_spew
@@ -580,6 +596,7 @@
 -k_emsgremoteclientgetcontrollerconfigresponse
 -k_emsgsmtestnextbuildschemaconversionresponse
 -k_esteamdatagrammsg_setsecondaryaddressresult
+-l
 -language
 -latewarp
 -launcherlanguage
@@ -595,6 +612,7 @@
 -lightifmissing
 -lightmapdeterministiccharts
 -limitvsconst
+-linetest
 -lmvlow
 -lmvmax
 -lmvmemgb
@@ -641,6 +659,7 @@
 -mat_vsync
 -maxdownloadfilesizemb
 -maxdxlevel
+-maxelements
 -maxluxelscale
 -maxplayers
 -maxplayers_override
@@ -666,6 +685,7 @@
 -mip
 -mobile
 -mobile_use_pc_graphics
+-module_dep
 -monitortexturesize
 -more
 -mousegrab
@@ -864,6 +884,7 @@
 -no_spread_finalize
 -no_texture_stream
 -no_tools_ignorechildprocess_env
+-nsight
 -null
 -nv
 -o
@@ -892,6 +913,9 @@
 -parallelhammerproceduralupdate
 -parallelhammerrenderables
 -particles
+-particleshaders
+-particle_allow_depth_blend
+-particle_disable_diffuse
 -particle_system_manager_event_update_fallback
 -pass_vk_processkey
 -pause
@@ -943,6 +967,7 @@
 -pv8oldspace
 -pv8poolthreads
 -pv8semispace
+-q
 -qdebug
 -qdevel
 -qmljsdebugger
@@ -1090,6 +1115,7 @@
 -shaderstats
 -shaders_force_recompile
 -shadowtargetsize
+-shallow
 -shelpers_dwarf_symbol_path
 -short
 -shotid
@@ -1180,6 +1206,7 @@
 -strictportbind
 -strict_subclass_load
 -strict_type_combinations
+-strings
 -stringtabledebug
 -stringtables
 -style
@@ -1202,6 +1229,7 @@
 -taunt
 -telemetry_level
 -tempcontent
+-test
 -testability
 -testmode
 -testmode_hide_invalid_content_sync_problems
@@ -1242,6 +1270,7 @@
 -tvmasteronly
 -tvprimaryonly
 -tx-struct
+-type
 -uidev
 -ui_page_manager_auto_delete
 -ui_page_manager_disable_auto_delete
@@ -1250,6 +1279,7 @@
 -unittest
 -unrestricted_maxplayers
 -untrusted
+-upconvert
 -use
 -useappid
 -usebanlist
@@ -1271,12 +1301,16 @@
 -usereslistfile
 -usestandarderror
 -usetcp
+-use_gamesounds_manifest
 -use_local_localization_file
 -use_or_reload
 -use_panel_id_in_rt_name
+-use_particle_manifest
 -use_raw_signal_handler
+-use_soundscape_manifest
 -use_valve_ice
 -ut
+-v
 -validate
 -validatereadonlyassets
 -valveclient

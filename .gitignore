@@ -95,3 +95,4 @@ depots/
 found_hashes.txt
 found_*.txt
 find-hashes/hashes.txt
+found_hashes*.zip.*

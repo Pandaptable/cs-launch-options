@@ -11,7 +11,7 @@
 -game, 602672632
 -i, 626235707
 -showasserts, 658464540
-759487401
+-upconvert, 759487401
 -nologstdiotofile, 803571430
 -r, 1033239863
 -contentroot, 1063703514

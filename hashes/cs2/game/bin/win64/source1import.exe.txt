@@ -12,7 +12,7 @@
 -resizing, 446691998
 -condebug, 450968086
 -allow_exe_in_build_dir, 453874011
-470334668
+-use_gamesounds_manifest, 470334668
 -rendertask, 474059147
 -usep4port, 486437523
 -gameinput, 487301348
@@ -26,7 +26,7 @@
 -480, 796564511
 -nologstdiotofile, 803571430
 -adapter, 871401063
-915029644
+-use_soundscape_manifest, 915029644
 -skip_driver_check, 921320528
 -parallelhammerproceduralupdate, 1031966263
 1036615016
@@ -42,13 +42,13 @@
 -h, 1193756079
 -con_logfile, 1234987984
 -addon, 1321118783
-1367058503
+-particleshaders, 1367058503
 -msaa, 1449492945
 -w, 1610683921
 -consolelog_notimestamp, 1615887145
 1726320631
 -nv, 1751934355
-1773411814
+-use_particle_manifest, 1773411814
 -parallelhammerrenderables, 1788282970
 1812451706
 -sse4, 1849011768
@@ -56,7 +56,7 @@
 -conrotate, 1937598139
 1981034704
 1997211886
-2016001542
+-particle_disable_diffuse, 2016001542
 -nop4sync, 2170082451
 2181738623
 -sdl_log, 2284796977
@@ -79,17 +79,17 @@
 -sse3, 2776830954
 -rs_reset, 2885683845
 -vconport, 3008056938
-3013868408
+-import_sounds_basemod, 3013868408
 -avx, 3020312170
 -border, 3067777132
-3081550377
+-cleanup, 3081550377
 -coop_fullscreen, 3231905404
 -fullscreen, 3232779058
 3296287005
 -reuse_cache, 3472309795
 3489200015
 -gpuraytracing, 3529211103
-3642696719
+-particle_allow_depth_blend, 3642696719
 -rendersystemdll, 3672818219
 -1600, 3701529680
 -x, 3793427571
