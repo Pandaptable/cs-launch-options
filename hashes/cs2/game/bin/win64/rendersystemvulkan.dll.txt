@@ -3,7 +3,7 @@
 -tools, 197456290
 -vulkan_disable_ext_multi_draw, 212502428
 -vulkan_enable_google_display_timing, 229613382
-284081097
+-ngxdebug, 284081097
 -vulkan_disable_khr_fragment_shading_rate, 405664701
 -vulkan_disable_device_coherent_allocations, 464878866
 -vulkan_aggressive_command_pool_rebalancing, 480927572

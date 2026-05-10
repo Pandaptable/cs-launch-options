@@ -707,6 +707,7 @@
 -net_port_try
 -newdialogs
 -new_default_font
+-ngxdebug
 -no-local-kubejob-work
 -noantilag
 -noassert
