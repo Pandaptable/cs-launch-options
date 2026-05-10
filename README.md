@@ -23,6 +23,11 @@ in `find-hashes` you can find a vibecoded rust snippet to check a dll for hashed
 
 `mc.py` is for use with `launch-options.txt` and the output of `find-hashes`
 
+I have a file up to 11 characters (10 character launch option) of hash collisions, if you want access to search through feel free to reach out.
+
+it's **1.8 GB** lmfao (148873221 collisions)
+
+
 other commands
 ```
 # check count of unnmapped launch options
