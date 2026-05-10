@@ -423,6 +423,7 @@
 -fullmemdumpallowed
 -fullmemdumprequiregb
 -fullminidumps
+-fullmip
 -fullscreen
 -fullversion
 -full_memory_dumps
@@ -662,6 +663,7 @@
 -minidump_log_path
 -minluxelscale
 -minmemory
+-mip
 -mobile
 -mobile_use_pc_graphics
 -monitortexturesize
