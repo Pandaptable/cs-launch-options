@@ -29,6 +29,7 @@
 +showvprof
 +sv_pure
 --debug_debug_game_event_list
+--debug_game_event_list
 --legacy_asset_live_preview
 --pulse_verbose
 -1080
