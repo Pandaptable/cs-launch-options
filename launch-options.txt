@@ -1,4 +1,3 @@
-+antiaddictiontest
 +clientport
 +cl_show_team_equipment
 +commandermousemove
@@ -97,7 +96,7 @@
 -animation-outtan
 -animation-outtan-weights
 -anim_compile_stats
--antiaddictiontest
+-antiaddiction_test
 -anticheat_settings
 -antilag
 -appidoverride
