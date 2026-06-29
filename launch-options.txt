@@ -1,3 +1,4 @@
++antiaddictiontest
 +clientport
 +cl_show_team_equipment
 +commandermousemove
@@ -96,6 +97,7 @@
 -animation-outtan
 -animation-outtan-weights
 -anim_compile_stats
+-antiaddictiontest
 -anticheat_settings
 -antilag
 -appidoverride
@@ -252,6 +254,7 @@
 -dac_offline
 -danger_mode_ignore_schema_mismatches
 -dark
+-dashboard
 -dbf
 -dbginput
 -dbl_max
@@ -463,6 +466,7 @@
 -gameinput
 -gamemodes_serverfile
 -gamepadui
+-gamestateintegration
 -gamestatsfileoutputonly
 -gamestatslogging
 -gamestatsloggingtofile
@@ -755,6 +759,7 @@
 -net_port_try
 -newdialogs
 -new_default_font
+-nexon
 -ngxdebug
 -no-local-kubejob-work
 -no1024
@@ -828,6 +833,7 @@
 -nomerge
 -nomergewater
 -nomessagebox
+-nomicsettings
 -nominidumps
 -nomipmaps
 -nomouse
@@ -844,6 +850,7 @@
 -nopreload
 -nopreloadmodels
 -nopreloadsounds
+-noprewarm
 -noprintconsole
 -noprintdebugger
 -noprintoglp
@@ -1517,6 +1524,7 @@
 -write_weapon_anim_prefab
 -ww
 -x
+-xaudio
 -xbox
 -xboxreslist
 -xlsp
