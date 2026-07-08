@@ -3,16 +3,14 @@
 -shaders, 334828552
 341089031
 -noasyncmaterialload, 556000788
--mobile_use_pc_graphics, 1492646052
 -shaderdebugging, 1568951001
 -batchwarnings, 1715525156
 -sse4, 1849011768
+1952542070
 -shaders_force_recompile, 2122897934
 +mat_clearshadercache, 2196080635
 -insecure, 2406745183
--vulkan_use_android_vcs, 2776628610
 -sse3, 2776830954
--mat_state_bundles, 2903140431
 -shaderopt, 2921512743
 2931451025
 -avx, 3020312170
@@ -21,4 +19,3 @@
 -materialsystem2_strict, 3870830038
 -shaderstats, 4221164810
 -sse2, 4274893216
--vulkan_use_ios_vcs, 4290427469

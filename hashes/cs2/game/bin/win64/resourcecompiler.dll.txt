@@ -8,7 +8,6 @@
 -tools, 197456290
 -highdpi, 208895721
 -vulkan, 259954249
--assettargetgameroot, 264265537
 -height, 297341175
 327937524
 -y, 439648255
@@ -43,6 +42,7 @@
 -vconsole, 1170955440
 -h, 1193756079
 -con_logfile, 1234987984
+1312559922
 -addon, 1321118783
 -msaa, 1449492945
 -lightmapdeterministiccharts, 1479722877
@@ -56,6 +56,7 @@
 -consolelog_append, 1849850619
 -conrotate, 1937598139
 1997211886
+2028644619
 -full_memory_dumps, 2037331155
 2085763134
 -fastpack, 2129537917
@@ -93,6 +94,7 @@
 -rendersystemdll, 3672818219
 -1600, 3701529680
 -x, 3793427571
+3826092090
 -crash_resource_compiler, 3897519340
 -devcontent, 3985700755
 -resourcecompiler_log_compile_stats, 4107478494

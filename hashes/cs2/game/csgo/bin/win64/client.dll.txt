@@ -20,7 +20,6 @@
 -untrusted, 1016118749
 -debugwelcome, 1042346542
 -find_unlocalized, 1116175964
--entkv_use_schema, 1190268809
 -gamestatsloggingtofile, 1254442816
 -noscripting, 1526587341
 -network_class_conform_check, 1561589398
@@ -49,6 +48,7 @@
 3489200015
 -internaliprequired, 3515233334
 -autoconfig, 3596328012
+-forceperfectworld, 3598840424
 -vscriptdebug, 3616760377
 -defaultgamedir, 3762323426
 -autodetectedperfectworld, 3778424420

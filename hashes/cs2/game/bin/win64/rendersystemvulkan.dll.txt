@@ -6,7 +6,6 @@
 -ngxdebug, 284081097
 -vulkan_disable_khr_fragment_shading_rate, 405664701
 -vulkan_disable_device_coherent_allocations, 464878866
--vulkan_aggressive_command_pool_rebalancing, 480927572
 -vulkan_force_cpu, 482146288
 -vulkan_disable_ext_load_store_op_none, 493243299
 -vulkan_fossilize_log_verbose, 553718269
@@ -15,18 +14,14 @@
 -antilag, 760425684
 783739508
 -abortprocessonserioustexturewarning, 825867510
--vulkan_trim_command_pools_2gb, 857016567
 -adapter, 871401063
 -sgpu, 910340513
--maxtextureres_2gb, 915504071
--vulkan_trim_all_command_pools, 919484247
 -ignoredxsupportcfg, 966457197
 -sdl_displayindex, 984772713
 -vulkan_disable_external_subpass_dependency, 991329886
 -force_recommend_dx11, 1014489924
 -noassert, 1067982513
 -vulkan_disable_ext_depth_bias_control, 1072387495
--dontevicttextures, 1145230473
 -vulkan_enable_ext_device_generated_commands, 1183232867
 -vulkan_disable_steam_downloaded_shader_cache, 1222989069
 -renderdoc_capture_validation_errors, 1238242786
@@ -36,8 +31,8 @@
 -vulkan_depth_texture_as_r32f, 1440958426
 -vulkan_enable_ext_pipeline_robustness, 1450036158
 -vulkan_disable_ext_swapchain_maintenance1, 1455395299
+1458039496
 -vulkan_disable_ext_mesh_shaders, 1471640956
--vulkan_disable_swapchain_sampling, 1494091466
 -noreflex, 1548402123
 -vulkan_alloc_callbacks, 1549204801
 -shadowtargetsize, 1562981286
@@ -56,10 +51,9 @@
 -nodlss, 1944714247
 -vulkan_enable_nv_raytracing_validation, 1957510917
 -renderdoc, 1980692650
--vulkan_trim_all_command_pools_2gb, 1993798735
 -autoconfig_level, 1997326025
+2179270029
 -vulkanrenderthreadstack, 2194226460
--maxtexturepoolsize_2gb, 2219828148
 2346691913
 -vulkan_disable_fossilize_whitelist, 2414162262
 -vulkan_disable_ext_conditional_rendering, 2429838881
@@ -79,6 +73,7 @@
 -vulkan_disable_khr_dynamic_rendering, 2888494261
 -vulkan_ignore_ctdl_bindless_non_blocking_issues, 2915211924
 -maxdxlevel, 2916934716
+-shaderopt, 2921512743
 -vulkan_disable_ext_extended_dynamic_state_2, 2989622753
 -avx, 3020312170
 -vulkan_cmd_buffer_pool_size, 3046470404
@@ -99,7 +94,6 @@
 -gpuraytracing, 3529211103
 -vulkan_enable_robustness, 3538741073
 -vulkan_disable_ext_validation_cache, 3540448974
--vulkan_aggressive_command_pool_rebalancing_2gb, 3588170544
 -autoconfig, 3596328012
 -vulkan_dump_shaders, 3614272223
 -vulkan_disable_khr_swapchain_mutable_format, 3649009234
@@ -110,7 +104,6 @@
 -noconfig, 4015530479
 -maxtextureres, 4068712167
 -nsight, 4138247883
--vulkan_trim_command_pools, 4193819449
 -vulkan_preload_fossilize, 4213386972
 -shaderstats, 4221164810
 -vulkan_ignore_minspec, 4221873224

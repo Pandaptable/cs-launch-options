@@ -1,4 +1,5 @@
 -tool, 1574749
+3120224
 -novconsole, 12931391
 -uselogdir, 21729377
 -valveserver, 34501765
@@ -6,7 +7,6 @@
 -console, 37560161
 -attachtodebugger, 39359517
 -steam, 53536153
--steamhdl_steamguard, 81837292
 -noborder, 85611144
 -720, 93284877
 -benchframes, 140396338
@@ -28,13 +28,11 @@
 -sdl_video_driver, 500051639
 -ignoreassertafterminidump, 500535430
 -dev, 574071661
--steamlogin_accesscode, 593607175
 -game, 602672632
 -sw, 628725258
 -no_tools_ignorechildprocess_env, 631902775
 -low, 639963259
 -safe_mode, 642946094
--dxlevel, 647217068
 -nosse4, 656837765
 -showasserts, 658464540
 -rs_recommend_gen, 687350504
@@ -78,16 +76,13 @@
 -dedicated, 1436925979
 -msaa, 1449492945
 -hideconsole, 1452845556
--steamlogin_authority, 1521174208
 -nopvs, 1526890664
 -usebuildversion, 1561231826
 -disable_shader_compile_wait, 1575789442
 -worldwide, 1596223310
 -w, 1610683921
 -consolelog_notimestamp, 1615887145
--steamhdl_user, 1622931990
 -flushlog, 1663315727
--steamhdl_init, 1699613595
 -warmtime, 1734994539
 -nv, 1751934355
 -textsublanguage, 1755977669
@@ -95,10 +90,10 @@
 -appidoverride, 1809419997
 -sse4, 1849011768
 -consolelog_append, 1849850619
+-concommandpipe, 1852627485
 -heapcheck, 1892883470
 -conrotate, 1937598139
 1997211886
--steamhdl_password, 2024503135
 -full_memory_dumps, 2037331155
 -nohltv, 2074638849
 -textlanguage, 2115173857
@@ -119,7 +114,6 @@
 -bigwindow, 2579478974
 -launcherlanguage, 2584558099
 -fs, 2587423816
--steamhdl_immediatelogin, 2607228314
 -windowless, 2653084028
 +port, 2694212796
 -benchtime, 2709576564
@@ -158,7 +152,6 @@
 -snallownoauth, 3371237308
 -perfectworld, 3451720338
 -ioidlecheck, 3468939281
--steamhdl_steamguard_email, 3470219381
 -set_power_qos_disable, 3478593498
 3489200015
 -nomaster, 3491324333
@@ -181,7 +174,6 @@
 -nopriorityboost, 3985938959
 -noconfig, 4015530479
 -dxwarp, 4184646854
--dac_offline, 4205805975
 -asyncconsole, 4210168119
 -servertime, 4210410144
 -multiplier, 4243272330

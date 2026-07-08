@@ -6,7 +6,6 @@
 -buildsparseshadowtree, 719891883
 -pressdemo, 886486246
 -vscript_allow_local_disk_access, 969735938
--entkv_use_schema, 1190268809
 -gamestatsloggingtofile, 1254442816
 -addon, 1321118783
 -disable_workshop_command_filtering, 1432471252
@@ -27,6 +26,7 @@
 -perfectworld, 3451720338
 3489200015
 -internaliprequired, 3515233334
+-forceperfectworld, 3598840424
 -vscriptdebug, 3616760377
 +dev_simulate_gcdown, 4037768485
 -vscriptdebug_game, 4265542941
