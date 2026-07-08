@@ -60,6 +60,7 @@ def process_output(output_text, target_dir_path):
 		sys.exit(1)
 
 	updated_files_count = 0
+	successful_mappings = set()
 
 	for txt_file in txt_files:
 		with open(txt_file, "r", encoding="utf-8", newline="") as f:
@@ -79,6 +80,7 @@ def process_output(output_text, target_dir_path):
 					new_line = f"{opt_val}, {line_hash}{remainder}"
 					new_lines.append(new_line)
 					file_modified = True
+					successful_mappings.add(opt_val)
 					continue
 
 			new_lines.append(line)
@@ -89,6 +91,13 @@ def process_output(output_text, target_dir_path):
 			updated_files_count += 1
 
 	print(f"[+] Finished. Updated {updated_files_count} files using {len(mappings)} mappings.")
+
+	if successful_mappings:
+		print(f"[*] The following {len(successful_mappings)} launch options resulted in mappings:")
+		for opt in sorted(successful_mappings):
+			print(f"{opt}")
+	else:
+		print("[-] None of the provided launch options resulted in mappings to the files.")
 
 
 def main():

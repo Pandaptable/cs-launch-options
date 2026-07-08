@@ -218,6 +218,7 @@
 -comment
 -component
 -conclearlog
+-concommandpipe
 -condebug
 -connect_test
 -conrotate
@@ -1521,6 +1522,7 @@
 -worldwide
 -write_debug_path_trace_scene_info
 -write_weapon_anim_prefab
+-wv
 -ww
 -x
 -xaudio
