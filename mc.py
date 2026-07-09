@@ -90,14 +90,14 @@ def process_output(output_text, target_dir_path):
 				f.writelines(new_lines)
 			updated_files_count += 1
 
-	print(f"[+] Finished. Updated {updated_files_count} files using {len(mappings)} mappings.")
-
 	if successful_mappings:
 		print(f"[*] The following {len(successful_mappings)} launch options resulted in mappings:")
 		for opt in sorted(successful_mappings):
 			print(f"{opt}")
 	else:
 		print("[-] None of the provided launch options resulted in mappings to the files.")
+
+	print(f"[+] Finished. Updated {updated_files_count} files using {len(mappings)} mappings.")
 
 
 def main():
