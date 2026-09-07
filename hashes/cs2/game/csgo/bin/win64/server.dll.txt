@@ -26,7 +26,6 @@
 -perfectworld, 3451720338
 3489200015
 -internaliprequired, 3515233334
--forceperfectworld, 3598840424
 -vscriptdebug, 3616760377
 +dev_simulate_gcdown, 4037768485
 -vscriptdebug_game, 4265542941
