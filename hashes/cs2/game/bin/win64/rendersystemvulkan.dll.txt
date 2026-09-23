@@ -4,6 +4,7 @@
 -vulkan_disable_ext_multi_draw, 212502428
 -vulkan_enable_google_display_timing, 229613382
 -ngxdebug, 284081097
+-aftermath, 293978397
 -vulkan_disable_khr_fragment_shading_rate, 405664701
 -vulkan_disable_device_coherent_allocations, 464878866
 -vulkan_force_cpu, 482146288
@@ -54,7 +55,9 @@
 -autoconfig_level, 1997326025
 2179270029
 -vulkanrenderthreadstack, 2194226460
+2299247585
 2346691913
+2382042679
 -vulkan_disable_fossilize_whitelist, 2414162262
 -vulkan_disable_ext_conditional_rendering, 2429838881
 -noinitfallbacktextures, 2462688185
@@ -85,6 +88,7 @@
 -vulkan_disable_ext_memory_priority, 3227945026
 -vulkan_validation_info, 3305840807
 -vulkan_validation_error_assert, 3309685411
+3337986277
 -vulkan_disable_amd_memory_overallocation_behavior, 3370526142
 -nogpuraytracing, 3400649128
 -vulkan_disable_steam_shader_cache, 3417464481
